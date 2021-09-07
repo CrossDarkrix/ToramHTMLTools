@@ -27,7 +27,7 @@ def STRss():
 	SkillCRTD_MSG = html.DIV("クリティカルUpのレベル:")
 	SkillCRTD = html.INPUT()
 	Submit_BTNs = html.BUTTON("計算する")
-	
+
 	TEXT_Feild <= STR_MSG + STRs + STR_Percent_MSG + STRs_Percent + CRTDMG_MSG + CriticalDamages + CRTDMG_Percent_MSG + CrtDamage_Percents + SkillCRTD_MSG + SkillCRTD + html.BR() + Submit_BTNs
 	STRs.focus()
 	STRs_Percent.focus()
@@ -78,7 +78,7 @@ def main():
 		CRtSTR = 150 + (int(STR.value) / 5)
 		CriticalDamage_Percent = CRtSTR * ((int(CrtDamage_Percent.value) + SkillCrtDamage) / 100)
 
-		AllCriticalDamage = AllSTR + eval(CriticalDamage.value) + flr(CriticalDamage_Percent)
+		AllCriticalDamage = AllSTR + int(CriticalDamage.value) + flr(CriticalDamage_Percent)
 		document["RESULT"] <= "あなたのクリティカルダメージは: {CRTDAMAGE}です。".format(CRTDAMAGE=flr(AllCriticalDamage))
 main()
 </script>

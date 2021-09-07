@@ -279,37 +279,46 @@ def main():
 	def click(cl):
 		jobs_clear()
 		tclear()
-		sclear()
 		Selector = str(SSelector.value)
 		if Selector == '1':
-			document["JOBS"] <= '>>片手剣を選択しました\n'
+			document["JOBS"] <= '>>片手剣を選択しました'
+			sclear()
 			One_handed_sword()
 		elif Selector == '2':
-			document["JOBS"] <= '>>両手剣を選択しました\n'
+			document["JOBS"] <= '>>両手剣を選択しました'
+			sclear()
 			Tow_handed_sword()
 		elif Selector == '3':
-			document["JOBS"] <= '>>双剣を選択しました\n'
+			document["JOBS"] <= '>>双剣を選択しました'
+			sclear()
 			Dual_sword()
 		elif Selector == '4':
-			document["JOBS"] <= '>>拳を選択しました\n'
+			document["JOBS"] <= '>>拳を選択しました'
+			sclear()
 			Knuckle()
 		elif Selector == '5':
-			document["JOBS"] <= '>>旋風槍を選択しました\n'
+			document["JOBS"] <= '>>旋風槍を選択しました'
+			sclear()
 			Halberd()
 		elif Selector == '6':
-			document["JOBS"] <= '>>刀を選択しました\n'
+			document["JOBS"] <= '>>刀を選択しました'
+			sclear()
 			Katana()
 		elif Selector == '7':
-			document["JOBS"] <= '>>杖を選択しました\n'
+			document["JOBS"] <= '>>杖を選択しました'
+			sclear()
 			Staff()
 		elif Selector == '8':
-			document["JOBS"] <= '>>魔導具を選択しました\n'
+			document["JOBS"] <= '>>魔導具を選択しました'
+			sclear()
 			Magic_Devices()
 		elif Selector == '9':
-			document["JOBS"] <= '>>弓を選択しました\n'
+			document["JOBS"] <= '>>弓を選択しました'
+			sclear()
 			Bow()
 		elif Selector == '10':
-			document["JOBS"] <= '>>自動弓を選択しました\n'
+			document["JOBS"] <= '>>自動弓を選択しました'
+			sclear()
 			BowGun()
 		else:
 			document["JOBS"] <= '>>番号を入力してください'

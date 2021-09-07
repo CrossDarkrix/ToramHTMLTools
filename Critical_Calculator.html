@@ -1,0 +1,113 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>トーラムオンライン クリティカル計算ツール</title>
+<script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/brython@3.9/brython.min.js">
+</script>
+<script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/brython@3.9/brython_stdlib.js">
+</script>
+</head>
+<body onload="brython()">
+<script type="text/python">
+from browser import document, html, bind
+import math, sys
+document["TITLE"] <= "クリティカル計算ツール"
+TEXT_Feild = document["text_field"]
+defCRT = int("25")
+
+def Crtical():
+	rDevice_MSG = html.DIV("ご使用端末は？iOS(1) 又は Android(2)? :")
+	rDevice = html.INPUT()
+	rStatusCRT_MSG = html.DIV("ステータス(CRT) :")
+	rStatusCRT = html.INPUT()
+	rSkillCRT_MSG = html.DIV("クリティカルUp Lv :")
+	rSkillCRT = html.INPUT()
+	rEQCRT_MSG =  html.DIV("クリティカル率+ :")
+	rEQCRT = html.INPUT()
+	rEQsCRT_MSG = html.DIV("クリティカル率(%)+ :")
+	rEQsCRT = html.INPUT()
+	Submit_BTNs = html.BUTTON("計算する")
+	
+	TEXT_Feild <= rDevice_MSG + rDevice + rStatusCRT_MSG + rStatusCRT + rSkillCRT_MSG + rSkillCRT + rEQCRT_MSG + rEQCRT + rEQsCRT_MSG + rEQsCRT + html.BR() + Submit_BTNs
+	rDevice.focus()
+	rStatusCRT.focus()
+	rSkillCRT.focus()
+	rEQCRT.focus()
+	rEQsCRT.focus()
+	
+	return rDevice, rStatusCRT, rSkillCRT, rEQCRT, rEQsCRT, Submit_BTNs
+
+def cclear():
+	document["RESULT"].clear()
+
+def main():
+	Device, StatusCRT, SkillCRT, EQCRT, EQsCRT, Submit_BTN = Crtical()
+	@bind(Submit_BTN,"click")
+	def click(cl):
+		cclear()
+		try:
+			Dev = Device.value
+		except:
+			Dev = "1"
+		try:
+			StCRT = int(StatusCRT.value)
+		except:
+			StCRT = 1
+		try:
+			SkCTRlv = int(SkillCRT.value)
+		except:
+			SkCTRlv = 1
+		try:
+			ECrtValue = int(EQCRT.value)
+		except:
+			ECrtValue = 1
+		try:
+			EsCrtValue = int(EQsCRT.value)
+		except:
+			EsCrtValue = 1
+
+		if SkCTRlv == 1:
+			SCr = 1
+		if SkCTRlv == 2:
+			SCr = 1
+		if SkCTRlv == 3:
+			SCr = 2
+		if SkCTRlv == 4:
+			SCr = 2
+		if SkCTRlv == 5:
+			SCr = 3
+		if SkCTRlv == 6:
+			SCr = 3
+		if SkCTRlv == 7:
+			SCr = 4
+		if SkCTRlv == 8:
+			SCr = 4
+		if SkCTRlv == 9:
+			SCr = 5
+		if SkCTRlv == 10:
+			SCr = 5
+		if Dev == "1":
+			DeviceCals = str(math.floor((defCRT+math.floor(StCRT/3.3999))*((1+0.01*EsCrtValue)*100)/100)+ECrtValue+SCr)
+		elif Dev == "2":
+			DeviceCals = str(math.floor((defCRT+math.floor(StCRT/3.4001))*((1+0.01*EsCrtValue)*100)/100)+ECrtValue+SCr)
+		
+		document["RESULT"] <= "あなたのクリティカル率は{}です。".format(DeviceCals)
+main()
+</script>
+	<h2 id="TITLE"></h2>
+	<div>
+		Tips:<br>
+			「ご使用端末」には1でiOS、2でAndroidです<br>
+			「ステータス(CRT)」にはステータスの「CRT」の値を入れてね(ない場合は空欄でOK)<br>
+			「クリティカルUp Lv」にはバトルスキルのクリティカル率 Upのレベルを入れてね<br>
+			「クリティカル率+」には武器や鎧やクリスタ、エンチャントやスキルの合計クリティカル値を入れてね<br>
+			「クリティカル率(%)+」には武器や鎧やクリスタ、エンチャントやスキルの合計クリティカル値(%)を入れてね<br><br>
+	</div>
+	<div id="text_field"></div>
+	<h2 id="RESULT" style="color: red;"></h2>
+
+        </body>
+
+    </html>

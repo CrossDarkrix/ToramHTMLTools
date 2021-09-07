@@ -1,0 +1,106 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>トーラムオンライン 異常耐性率の計算ツール</title>
+<script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/brython@3.9/brython.min.js">
+</script>
+<script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/brython@3.9/brython_stdlib.js">
+</script>
+</head>
+<body onload="brython()">
+<script type="text/python">
+from browser import document, html, bind
+
+document["TITLE"] <= "装備による異常耐性率の計算ツール"
+TEXT_Feild = document["text_field"]
+
+def Abnomarls():
+	StatusMEN_MSG = html.DIV("MEN:")
+	StatusMEN = html.INPUT()
+
+	men_ADD1_MSG = html.DIV("MEN装備(%) part 1:")
+	men_ADD1 = html.INPUT()
+	men_ADD2_MSG = html.DIV("MEN装備(%) part 2:")
+	men_ADD2 = html.INPUT()
+	men_ADD3_MSG = html.DIV("MEN装備(%) part 3:")
+	men_ADD3 = html.INPUT()
+	men_ADD4_MSG = html.DIV("MEN装備(%) part 4:")
+	men_ADD4 = html.INPUT()
+	men_ADD5_MSG = html.DIV("MEN装備(%) part 5:")
+	men_ADD5 = html.INPUT()
+	men_ADD6_MSG = html.DIV("MEN装備(%) part 6:")
+	men_ADD6 = html.INPUT()
+	men_ADD7_MSG = html.DIV("MEN装備(%) part 7:")
+	men_ADD7 = html.INPUT()
+	men_ADD8_MSG = html.DIV("MEN装備(%) part 8:")
+	men_ADD8 = html.INPUT()
+	men_BTN = html.BUTTON("計算する")
+	TEXT_Feild <= StatusMEN_MSG + StatusMEN + men_ADD1_MSG + men_ADD1 + men_ADD2_MSG + men_ADD2 + men_ADD3_MSG + men_ADD3 + men_ADD4_MSG + men_ADD4 + men_ADD5_MSG + men_ADD5 + men_ADD6_MSG + men_ADD6 + men_ADD7_MSG + men_ADD7 + men_ADD8_MSG + men_ADD8 + html.BR() + men_BTN
+
+	StatusMEN.focus()
+	men_ADD1.focus()
+	men_ADD2.focus()
+	men_ADD3.focus()
+	men_ADD4.focus()
+	men_ADD5.focus()
+	men_ADD6.focus()
+	men_ADD7.focus()
+	men_ADD8.focus()
+
+	return StatusMEN, men_ADD1, men_ADD2, men_ADD3, men_ADD4, men_ADD5, men_ADD6, men_ADD7, men_ADD8, men_BTN
+
+def main():
+	STMEN, m1, m2, m3, m4, m5, m6, m7, m8, BTN = Abnomarls()
+	@bind(BTN, "click")
+	def fClick(cl):
+		try:
+			stutus = int(STMEN.value)
+			document["DefMEN"] <= stutus
+		except:
+			document["DefMEN"] <= "255"
+			stutus = 255
+		try:
+			MENADD_1 = int(m1.value)
+		except:
+			MENADD_1 = int("0")
+		try:
+			MENADD_2 = int(m2.value)
+		except:
+			MENADD_2 = int("0")
+		try:
+			MENADD_3 = int(m3.value)
+		except:
+			MENADD_3 = int("0")
+		try:
+			MENADD_4 = int(m4.value)
+		except:
+			MENADD_4 = int("0")
+		try:
+			MENADD_5 = int(m5.value)
+		except:
+			MENADD_5 = int("0")
+		try:
+			MENADD_6 = int(m6.value)
+		except:
+			MENADD_6 = int("0")
+		try:
+			MENADD_7 = int(m7.value)
+		except:
+			MENADD_7 = int("0")
+		try:
+			MENADD_8 = int(m8.value)
+		except:
+			MENADD_8 = int("0")
+		fmen = str(int(MENADD_1 + MENADD_2 + MENADD_3 + MENADD_4 + MENADD_5 + MENADD_6 + MENADD_7 + MENADD_8 + (stutus / 3.4)))
+		document["RESULT"] <= "あなたの異常耐性率は" + fmen + "%です。"
+main()
+</script>
+	<h2 id="TITLE"></h2>
+	<h3 id="DefMEN">MEN: </h3>
+	<div id="text_field"></div>
+	<h2 id="RESULT" style="color: red;"></h2>
+        </body>
+
+    </html>

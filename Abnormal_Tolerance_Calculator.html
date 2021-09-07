@@ -51,15 +51,23 @@ def Abnomarls():
 
 	return StatusMEN, men_ADD1, men_ADD2, men_ADD3, men_ADD4, men_ADD5, men_ADD6, men_ADD7, men_ADD8, men_BTN
 
+def aclear():
+	document["RESULT"].clear()
+
+def dclear():
+	document["DefMEN"].clear()
+
 def main():
 	STMEN, m1, m2, m3, m4, m5, m6, m7, m8, BTN = Abnomarls()
 	@bind(BTN, "click")
 	def fClick(cl):
+		aclear()
+		dclear()
 		try:
 			stutus = int(STMEN.value)
-			document["DefMEN"] <= stutus
+			document["DefMEN"] <= "MEN: " + stutus
 		except:
-			document["DefMEN"] <= "255"
+			document["DefMEN"] <= "MEN: 255"
 			stutus = 255
 		try:
 			MENADD_1 = int(m1.value)

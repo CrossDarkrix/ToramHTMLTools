@@ -17,6 +17,16 @@ import sys
 document["TITLE"] <= "安定率 計算機 v1.0"
 TEXT_Feild = document["text_field"]
 Selctor_SW = document["SELECTOR"]
+
+def sclear():
+	document["RESULT"].clear()
+
+def jobs_clear():
+	document["JOBS"].clear()
+
+def tclear():
+	document["text_field"].clear()
+
 def ONEHANDsw():
 	s1ALL_Equipment_MSG = html.DIV("装備の安定率の合計値:")
 	s1ALL_Equipment = html.INPUT()
@@ -35,6 +45,7 @@ def One_handed_sword(): # 片手剣
 	ALL_EQ, D, S, BTN = ONEHANDsw()
 	@bind(BTN,"click")
 	def Oclick(cl):
+		sclear()
 		ALL_Equipment = int(ALL_EQ.value)
 		DEX = int(D.value)
 		STR = int(S.value)
@@ -56,6 +67,7 @@ def Tow_handed_sword(): # 両手剣
 	ALL_EQ, D, BTN = TOWHANDsw()
 	@bind(BTN,"click")
 	def TClick(cl):
+		sclear()
 		ALL_Equipment = int(ALL_EQ.value)
 		DEX = int(D.value)
 		Result = math_floor(ALL_Equipment + DEX / 10)
@@ -79,6 +91,7 @@ def Dual_sword(): # 双剣
 	ALL_EQ, D, S, BTN = DUALsw()
 	@bind(BTN, "click")
 	def DClick(cl):
+		sclear()
 		ALL_Equipment = int(ALL_EQ.value)
 		DEX = int(D.value)
 		STR = int(S.value)
@@ -100,6 +113,7 @@ def Knuckle(): # 拳
 	ALL_EQ, D, BTN = KNUCKLEs()
 	@bind(BTN, "click")
 	def KClick(cl):
+		sclear()
 		ALL_Equipment = int(ALL_EQ.value)
 		DEX = int(D.value)
 		Result = math_floor(ALL_Equipment + DEX / 40)
@@ -123,6 +137,7 @@ def Halberd(): # 旋風槍
 	ALL_EQ, D, STR, BTN = HALBERDs()
 	@bind(BTN, "click")
 	def HClick(cl):
+		sclear()
 		ALL_Equipment = int(ALL_EQ.value)
 		DEX = int(D.value)
 		STR = int(S.value)
@@ -147,6 +162,7 @@ def Katana(): # 刀
 	ALL_EQ, D, S, BTN = KATANAs()
 	@bind(BTN, "click")
 	def KTClick(cl):
+		sclear()
 		ALL_Equipment = int(ALL_EQ.value)
 		DEX = int(D.value)
 		STR = int(S.value)
@@ -168,6 +184,7 @@ def Staff(): # 杖
 	ALL_EQ, S, BTN = STAFFs()
 	@bind(BTN, "click")
 	def STClick(cl):
+		sclear()
 		ALL_Equipment = int(ALL_EQ.value)
 		STR = int(S.value)
 		Result = math_floor(ALL_Equipment + STR / 20)
@@ -188,6 +205,7 @@ def Magic_Devices(): # 魔導具
 	ALL_EQ, D, BTN = MAGICDEVICEs()
 	@bind(BTN, "click")
 	def MDClick(cl):
+		sclear()
 		ALL_Equipment = int(ALL_EQ.value)
 		DEX = int(D.value)
 		Result = math_floor(ALL_Equipment + DEX / 10)
@@ -214,6 +232,7 @@ def Bow(): # 弓
 	ALL_EQ, D, S, Arrow, BTN = BOWs()
 	@bind(BTN, "click")
 	def BClick(cl):
+		sclear()
 		ALL_Equipment = int(ALL_EQ.value)
 		Arrow_STabillity = int(Arrow.value)
 		DEX = int(D.value)
@@ -239,12 +258,13 @@ def BowGun(): # 自動弓
 	ALL_EQ, S, Arrow, BTN = BOWGUNs()
 	@bind(BTN, "click")
 	def BOClick(cl):
+		sclear()
 		ALL_Equipment = int(ALL_EQ.value)
 		Arrow_STabillity = int(Arrow.value)
 		STR = int(S.value)
 		Result = math_floor(ALL_Equipment + Arrow_STabillity / 2 + STR / 20)
 		document["RESULT"] <= 'あなたの安定率は: {Bowgun_STabillity}%です。'.format(Bowgun_STabillity=Result)
-    
+
 def main_d():
 	s1Selector_MSG = html.DIV("計算したい職の番号:")
 	s1Selector = html.INPUT()
@@ -257,39 +277,41 @@ def main():
 	SSelector, BTNs = main_d()
 	@bind(BTNs, "click")
 	def click(cl):
+		jobs_clear()
+		tclear()
 		Selector = str(SSelector.value)
 		if Selector == '1':
-			document["JOBS"] <= '片手剣を選択しました\n'
+			document["JOBS"] <= '>>片手剣を選択しました\n'
 			One_handed_sword()
 		elif Selector == '2':
-			document["JOBS"] <= '両手剣を選択しました\n'
+			document["JOBS"] <= '>>両手剣を選択しました\n'
 			Tow_handed_sword()
 		elif Selector == '3':
-			document["JOBS"] <= '双剣を選択しました\n'
+			document["JOBS"] <= '>>双剣を選択しました\n'
 			Dual_sword()
 		elif Selector == '4':
-			document["JOBS"] <= '拳を選択しました\n'
+			document["JOBS"] <= '>>拳を選択しました\n'
 			Knuckle()
 		elif Selector == '5':
-			document["JOBS"] <= '旋風槍を選択しました\n'
+			document["JOBS"] <= '>>旋風槍を選択しました\n'
 			Halberd()
 		elif Selector == '6':
-			document["JOBS"] <= '刀を選択しました\n'
+			document["JOBS"] <= '>>刀を選択しました\n'
 			Katana()
 		elif Selector == '7':
-			document["JOBS"] <= '杖を選択しました\n'
+			document["JOBS"] <= '>>杖を選択しました\n'
 			Staff()
 		elif Selector == '8':
-			document["JOBS"] <= '魔導具を選択しました\n'
+			document["JOBS"] <= '>>魔導具を選択しました\n'
 			Magic_Devices()
 		elif Selector == '9':
-			document["JOBS"] <= '弓を選択しました\n'
+			document["JOBS"] <= '>>弓を選択しました\n'
 			Bow()
 		elif Selector == '10':
-			document["JOBS"] <= '自動弓を選択しました\n'
+			document["JOBS"] <= '>>自動弓を選択しました\n'
 			BowGun()
 		else:
-			document["JOBS"] <= '番号を入力してください'
+			document["JOBS"] <= '>>番号を入力してください'
 			sys.exit(0)
 main()
 
@@ -310,7 +332,7 @@ main()
 (「装備の安定率の合計値」には武器についている「ATK (??%)」の()内の数値と装備で盛っている安定率を入れてください。)<br>
 	</div>
 	<div id="SELECTOR"></div>
-	<h3 id="JOBS">>></h3>
+	<h3 id="JOBS"></h3>
 	<div id="text_field"></div>
 	<h2 id="RESULT" style="color: red;"></h2>
         </body>

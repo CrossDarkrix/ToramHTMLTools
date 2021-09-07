@@ -33,8 +33,10 @@ def STRss():
 	CrtDamage_Percents.focus()
 	
 	return  STRs, STRs_Percent, CriticalDamages, CrtDamage_Percents, Submit_BTNs
+
 def sclear():
 	document["RESULT"].clear()
+
 def main():
 	STR, STR_Percent, CriticalDamage, CrtDamage_Percent, Submit_BTN = STRss()
 	@bind(Submit_BTN,"click")

@@ -13,6 +13,44 @@ body{
 	background-color: #2b2b2b;
 	color: #e4cfcf;
 }
+input{
+	font: 15px/24px sans-serif;
+	width: 200px;
+	padding: 0.3em;
+	transition: 0.3s;
+	color: #d3d3d3;
+	border: none;
+	border-bottom: 2px solid #1b2538;
+	background-color: #343434;
+	
+	outline-color: #343434;
+	outline-style: groove;
+	outline-width: 4.1px;
+	}
+div{
+	font-size: 23px;
+	}
+button{
+	background-color: #4f4f4f;
+	color: #e4cfcf;
+	font-size: 25px;
+	width: 180px;
+	height: 40px;
+	outline: 0;
+	}
+div#RESULTs{
+	border: 2px groove;
+	color: #4f4f4f;
+	width: 420px;
+	height: 50px;
+}
+h2#RESULT{
+	font-size: 25px;
+	display:inline; 
+	width: 500px;
+	height: 50px;
+	color: red;
+}
 </style>
 </head>
 <body onload="brython()">
@@ -36,7 +74,7 @@ def Crtical():
 	rEQsCRT = html.INPUT()
 	Submit_BTNs = html.BUTTON("計算する")
 	
-	TEXT_Feild <= rDevice_MSG + rDevice + rStatusCRT_MSG + rStatusCRT + rSkillCRT_MSG + rSkillCRT + rEQCRT_MSG + rEQCRT + rEQsCRT_MSG + rEQsCRT + html.BR() + Submit_BTNs
+	TEXT_Feild <= rDevice_MSG + rDevice + rStatusCRT_MSG + rStatusCRT + rSkillCRT_MSG + rSkillCRT + rEQCRT_MSG + rEQCRT + rEQsCRT_MSG + rEQsCRT + html.BR() + html.BR() + Submit_BTNs
 	rDevice.focus()
 	rStatusCRT.focus()
 	rSkillCRT.focus()
@@ -111,8 +149,8 @@ main()
 			「クリティカル率+」には武器や鎧やクリスタ、エンチャントやスキルの合計クリティカル値を入れてね<br>
 			「クリティカル率(%)+」には武器や鎧やクリスタ、エンチャントやスキルの合計クリティカル値(%)を入れてね<br><br>
 	</div>
-	<div id="text_field"></div>
-	<h2 id="RESULT" style="color: red;"></h2>
+	<div id="text_field"></div><br>
+	<div id="RESULTs"><h2 id="RESULT" style="color: red;"></h2></div>
 
         </body>
 

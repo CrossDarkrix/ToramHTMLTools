@@ -13,6 +13,44 @@ body{
 	background-color: #2b2b2b;
 	color: #e4cfcf;
 }
+input{
+	font: 15px/24px sans-serif;
+	width: 200px;
+	padding: 0.3em;
+	transition: 0.3s;
+	color: #d3d3d3;
+	border: none;
+	border-bottom: 2px solid #1b2538;
+	background-color: #343434;
+	
+	outline-color: #343434;
+	outline-style: groove;
+	outline-width: 4.1px;
+	}
+div{
+	font-size: 23px;
+	}
+button{
+	background-color: #4f4f4f;
+	color: #e4cfcf;
+	font-size: 25px;
+	width: 180px;
+	height: 40px;
+	outline: 0;
+	}
+div#RESULTs{
+	border: 2px groove;
+	color: #4f4f4f;
+	width: 400px;
+	height: 50px;
+}
+h2#RESULT{
+	font-size: 25px;
+	display:inline; 
+	width: 500px;
+	height: 50px;
+	color: red;
+}
 </style>
 </head>
 <body onload="brython()">
@@ -43,7 +81,7 @@ def Abnomarls():
 	men_ADD8_MSG = html.DIV("MEN装備(%) part 8:")
 	men_ADD8 = html.INPUT()
 	men_BTN = html.BUTTON("計算する")
-	TEXT_Feild <= StatusMEN_MSG + StatusMEN + men_ADD1_MSG + men_ADD1 + men_ADD2_MSG + men_ADD2 + men_ADD3_MSG + men_ADD3 + men_ADD4_MSG + men_ADD4 + men_ADD5_MSG + men_ADD5 + men_ADD6_MSG + men_ADD6 + men_ADD7_MSG + men_ADD7 + men_ADD8_MSG + men_ADD8 + html.BR() + men_BTN
+	TEXT_Feild <= StatusMEN_MSG + StatusMEN + men_ADD1_MSG + men_ADD1 + men_ADD2_MSG + men_ADD2 + men_ADD3_MSG + men_ADD3 + men_ADD4_MSG + men_ADD4 + men_ADD5_MSG + men_ADD5 + men_ADD6_MSG + men_ADD6 + men_ADD7_MSG + men_ADD7 + men_ADD8_MSG + men_ADD8 + html.BR() + html.BR() + men_BTN
 
 	StatusMEN.focus()
 	men_ADD1.focus()
@@ -113,8 +151,8 @@ main()
 </script>
 	<h2 id="TITLE"></h2>
 	<h3 id="DefMEN">MEN: </h3>
-	<div id="text_field"></div>
-	<h2 id="RESULT" style="color: red;"></h2>
+	<div id="text_field"></div><br>
+	<div id="RESULTs"><h2 id="RESULT" style="color: red;"></h2></div>
         </body>
 
     </html>

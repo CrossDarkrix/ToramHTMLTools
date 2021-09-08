@@ -25,10 +25,18 @@ button{
 	outline: 0;
 	}
 div#BOARDER{
+	margin: 0px;
 	border: 5px solid;
+	height: 700px;
 	width: 680px;}
 p{
+	margin: 0px;
 	display:inline;}
+hr{	
+	border-color: #e4cfcf;
+	height: 2px;
+	border-style: solid;
+	border-width: 5px 0px 0px 0px;}
 </style>
 </head>
 <body onload="brython()">
@@ -49,10 +57,6 @@ def Rclear():
 	document["subTITLE3"].clear()
 	document["subTITLE4"].clear()
 	document["subTITLE5"].clear()
-	document["DASHLINE1"].clear()
-	document["DASHLINE2"].clear()
-	document["DASHLINE3"].clear()
-	document["DASHLINE4"].clear()
 	document["RESULT1"].clear()
 	document["RESULT2"].clear()
 	document["RESULT3"].clear()
@@ -95,10 +99,6 @@ def main():
 		document["subTITLE3"] <= "N"
 		document["subTITLE4"] <= "G"
 		document["subTITLE5"] <= "O"
-		document["DASHLINE1"] <= "----------------------------"
-		document["DASHLINE2"] <= "----------------------------"
-		document["DASHLINE3"] <= "----------------------------"
-		document["DASHLINE4"] <= "----------------------------"
 		document["RESULT1"] <= Num[0]
 		document["RESULT2"] <= Num[1]
 		document["RESULT3"] <= Num[2]
@@ -115,13 +115,12 @@ main()
 	<h2 id="TITLE"></h2>
 	<div id="BOARDER">
 	<p id="subTITLE1"></p>&ensp;&ensp;&ensp;<p id="subTITLE2"></p>&ensp;&ensp;&ensp;<p id="subTITLE3"></p>&ensp;&ensp;&ensp;<p id="subTITLE4"></p>&ensp;&ensp;&ensp;<p id="subTITLE5"></p><br>
-	<p id="DASHLINE1"></p><br>
+	<hr>
 	<p id="RESULT1"></p>&ensp;&ensp;&ensp;&ensp;&ensp;<p id="RESULT2"></p>&ensp;&ensp;&ensp;&ensp;&ensp;<p id="RESULT3"></p><br>
-	<p id="DASHLINE2"></p><br>
+	<hr>
 	<p id="RESULT4"></p>&ensp;&ensp;&ensp;&ensp;&ensp;<p id="RESULT5"></p>&ensp;&ensp;&ensp;&ensp;&ensp;<p id="RESULT6"></p><br>
-	<p id="DASHLINE3"></p><br>
+	<hr>
 	<p id="RESULT7"></p>&ensp;&ensp;&ensp;&ensp;&ensp;<p id="RESULT8"></p>&ensp;&ensp;&ensp;&ensp;&ensp;<p id="RESULT9"></p><br>
-	<p id="DASHLINE4"></p><br>
 	</div>
 	<div id="Bingo_field"></div>
 	</center>

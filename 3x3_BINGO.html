@@ -1,0 +1,109 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>ビンゴカードジェネレーター</title>
+<script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/brython@3.9/brython.min.js">
+</script>
+<script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/brython@3.9/brython_stdlib.js">
+</script>
+<style type="text/css">
+body{
+	background-color: #2b2b2b;
+	color: #e4cfcf;
+}
+button{
+	background-color: #4f4f4f;
+	color: #e4cfcf;
+	font-size: 25px;
+	width: 180px;
+	height: 40px;
+	outline: 0;
+	}
+
+p{
+	font-size: 25px;
+	display:inline;}
+</style>
+</head>
+<body onload="brython()">
+<script type="text/python">
+from browser import document, html, bind
+import random
+BIGO_BUTTON = document["Bingo_field"]
+document["TITLE"] <= "[3×3] ビンゴカードジェネレーター" + html.BR()
+def bingo():
+	Bingo_BTN = html.BUTTON("カードを作る")
+	BIGO_BUTTON <= html.BR() + html.BR() + Bingo_BTN
+	
+	return Bingo_BTN
+
+def Rclear():
+	document["subTITLE1"].clear()
+	document["subTITLE2"].clear()
+	document["subTITLE3"].clear()
+	document["subTITLE4"].clear()
+	document["subTITLE5"].clear()
+	document["DASHLINE1"].clear()
+	document["DASHLINE2"].clear()
+	document["DASHLINE3"].clear()
+	document["DASHLINE4"].clear()
+	document["RESULT1"].clear()
+	document["RESULT2"].clear()
+	document["RESULT3"].clear()
+	document["RESULT4"].clear()
+	document["RESULT5"].clear()
+	document["RESULT6"].clear()
+	document["RESULT7"].clear()
+	document["RESULT8"].clear()
+	document["RESULT9"].clear()
+
+def main():
+	BTN = bingo()
+	@bind(BTN, "click")
+	def BINGO_Click(cl):
+		Rclear()
+		minNum = 1
+		maxNum = 20
+		RangeD = list(range(minNum, maxNum))
+
+		for i in range(1):
+			Num = random.sample(RangeD, 8)
+			document["subTITLE1"] <= "B"
+			document["subTITLE2"] <= "I"
+			document["subTITLE3"] <= "N"
+			document["subTITLE4"] <= "G"
+			document["subTITLE5"] <= "O"
+			document["DASHLINE1"] <= "----------------------"
+			document["DASHLINE2"] <= "----------------------"
+			document["DASHLINE3"] <= "----------------------"
+			document["DASHLINE4"] <= "----------------------"
+			document["RESULT1"] <= Num[0]
+			document["RESULT2"] <= Num[1]
+			document["RESULT3"] <= Num[2]
+			document["RESULT4"] <= Num[3]
+			document["RESULT5"] <= "●"
+			document["RESULT6"] <= Num[4]
+			document["RESULT7"] <= Num[5]
+			document["RESULT8"] <= Num[6]
+			document["RESULT9"] <= Num[7]
+		
+main()
+</script>
+	<center>
+	<h2 id="TITLE"></h2>
+	<p id="subTITLE1"></p>&ensp;&ensp;&ensp;<p id="subTITLE2"></p>&ensp;&ensp;&ensp;<p id="subTITLE3"></p>&ensp;&ensp;&ensp;<p id="subTITLE4"></p>&ensp;&ensp;&ensp;<p id="subTITLE5"></p><br>
+	<p id="DASHLINE1"></p><br>
+	<p id="RESULT1"></p>&ensp;&ensp;&ensp;&ensp;&ensp;<p id="RESULT2"></p>&ensp;&ensp;&ensp;&ensp;&ensp;<p id="RESULT3"></p><br>
+	<p id="DASHLINE2"></p><br>
+	<p id="RESULT4"></p>&ensp;&ensp;&ensp;&ensp;&ensp;<p id="RESULT5"></p>&ensp;&ensp;&ensp;&ensp;&ensp;<p id="RESULT6"></p><br>
+	<p id="DASHLINE3"></p><br>
+	<p id="RESULT7"></p>&ensp;&ensp;&ensp;&ensp;&ensp;<p id="RESULT8"></p>&ensp;&ensp;&ensp;&ensp;&ensp;<p id="RESULT9"></p><br>
+	<p id="DASHLINE4"></p><br>
+
+	<div id="Bingo_field"></div><br>
+	</center>
+        </body>
+
+    </html>

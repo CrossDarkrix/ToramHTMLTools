@@ -71,6 +71,8 @@ def main():
 		RangeD = list(range(minNum, maxNum))
 
 		Num = random.sample(RangeD, 8)
+		if Num[0] <= 9:
+			Num[0] = '0' + str(Num[0])
 		if Num[1] <= 9:
 			Num[1] = '0' + str(Num[1])
 		if Num[2] <= 9:
@@ -81,7 +83,7 @@ def main():
 			Num[4] = '0' + str(Num[4])
 		if Num[5] <= 9:
 			Num[5] = '0' + str(Num[5])
-		if Num[6] <=10:
+		if Num[6] <= 9:
 			Num[6] = '0' + str(Num[6])
 		if Num[7] <= 9:
 			Num[7] = '0' + str(Num[7])

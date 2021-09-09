@@ -32,11 +32,17 @@ div#BOARDER{
 p{
 	margin: 0px;
 	display:inline;}
-hr{	
+hr{
 	border-color: #e4cfcf;
 	height: 2px;
 	border-style: solid;
 	border-width: 5px 0px 0px 0px;}
+textarea#subRESULT{
+	resize: none;
+	width: 448px;
+	height: 380px;
+	font-size: 80px;
+}
 </style>
 </head>
 <body onload="brython()">
@@ -47,7 +53,7 @@ BIGO_BUTTON = document["Bingo_field"]
 document["TITLE"] <= "[3×3] ビンゴカードジェネレーター" + html.BR()
 def bingo():
 	Bingo_BTN = html.BUTTON("カードを作る")
-	BIGO_BUTTON <= html.BR() + html.BR() + Bingo_BTN
+	BIGO_BUTTON <= html.BR() + Bingo_BTN
 	
 	return Bingo_BTN
 
@@ -66,6 +72,7 @@ def Rclear():
 	document["RESULT7"].clear()
 	document["RESULT8"].clear()
 	document["RESULT9"].clear()
+	document["subRESULT"].clear()
 
 def main():
 	BTN = bingo()
@@ -94,6 +101,10 @@ def main():
 		if Num[7] <= 9:
 			Num[7] = '0' + str(Num[7])
 
+		BingData2 = """{h1}  {h2}  {h3}
+{h4}  ●  {h5}
+{h6}  {h7}  {h8}""".format(h1=Num[0], h2=Num[1], h3=Num[2], h4=Num[3], h5=Num[4], h6=Num[5], h7=Num[6], h8=Num[7])
+
 		document["subTITLE1"] <= "B"
 		document["subTITLE2"] <= "I"
 		document["subTITLE3"] <= "N"
@@ -108,7 +119,7 @@ def main():
 		document["RESULT7"] <= Num[5]
 		document["RESULT8"] <= Num[6]
 		document["RESULT9"] <= Num[7]
-		
+		document["subRESULT"] <= BingData2
 main()
 </script>
 	<center>
@@ -121,7 +132,8 @@ main()
 	<p id="RESULT4"></p>&ensp;&ensp;&ensp;&ensp;&ensp;<p id="RESULT5"></p>&ensp;&ensp;&ensp;&ensp;&ensp;<p id="RESULT6"></p><br>
 	<hr>
 	<p id="RESULT7"></p>&ensp;&ensp;&ensp;&ensp;&ensp;<p id="RESULT8"></p>&ensp;&ensp;&ensp;&ensp;&ensp;<p id="RESULT9"></p><br>
-	</div>
+	</div><br>
+	<p>コピペ欄</p><br><textarea id="subRESULT"></textarea>
 	<div id="Bingo_field"></div>
 	</center>
         </body>

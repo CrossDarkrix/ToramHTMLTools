@@ -41,8 +41,9 @@ button{
 div#RESULTs{
 	border: 2px groove;
 	color: #4f4f4f;
-	width: 503.5px;
+	width: 510px;
 	height: 50px;
+
 }
 h2#RESULT{
 	font-size: 25px;
@@ -116,7 +117,14 @@ def main():
 			SkillCrtDamage = 5
 		else:
 			document["RESULT"] <= "エラー: バトルスキルのレベルが既定値範囲外です。"
-
+		if STR_Percent.value == '':
+			STR_Percent.value = '0'
+		if STR.value == '':
+			STR.value = '0'
+		if CrtDamage_Percent.value == '':
+			CrtDamage_Percent.value = '0'
+		if CriticalDamage.value == '':
+			CriticalDamage.value = '0'
 		StrPercent = int(STR.value) * (int(STR_Percent.value) / 100)
 		AllSTR = 150 + ((StrPercent + int(STR.value)) / 5)
 		CRtSTR = 150 + (int(STR.value) / 5)

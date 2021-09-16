@@ -6,4 +6,4 @@
 
 [Brythonのホームページ](https://brython.info/)
 
-[BrythonのGithub](https://github.com/brython-dev/brython)
+[BrythonのGithubページ](https://github.com/brython-dev/brython)

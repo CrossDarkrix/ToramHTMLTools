@@ -46,9 +46,9 @@ div#RESULTs{
 
 }
 h2#RESULT{
-	font-size: 25px;
+	font-size: 30px;
 	display:inline; 
-	width: 500px;
+	width: 550px;
 	height: 50px;
 	color: red;
 }
@@ -78,7 +78,7 @@ def STRss():
 	CriticalDamages = html.INPUT()
 	CRTDMG_Percent_MSG = html.DIV("合計クリティカルダメージ(%):")
 	CrtDamage_Percents = html.INPUT()
-	SkillCRTD_MSG = html.DIV("クリティカルUpのレベル:")
+	SkillCRTD_MSG = html.DIV("クリティカルアップのレベル:")
 	SkillCRTD = html.INPUT()
 	Submit_BTNs = html.BUTTON("計算する")
 
@@ -151,7 +151,7 @@ main()
 			「STR値(%)の合計値」には武器や鎧、クリスタのSTR%を入れてください<br>
 			「合計クリティカルダメージ」には武器や鎧やクリスタ、エンチャントの合計クリティカルダメージを入れてください<br>
 			「合計クリティカルダメージ(%)」には武器や鎧やクリスタ、エンチャントの合計クリティカルダメージ(%)を入れてください<br>
-			「クリティカルUpのレベル」にはバトルスキルのクリティカルUpのレベルを入れてください(空欄でも可)<br><br>
+			「クリティカルアップのレベル」にはバトルスキルのクリティカルアップのレベルを入れてください(空欄でも可)<br><br>
 	</div>
 	<div id="text_field"></div><br>
 	<div id="RESULTs"><h2 id="RESULT"></h2></div>

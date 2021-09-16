@@ -69,11 +69,11 @@ TEXT_Feild = document["text_field"]
 defCRT = int("25")
 
 def Crtical():
-	rDevice_MSG = html.DIV("ご使用端末は？iOS(1) 又は Android(2)? :")
+	rDevice_MSG = html.DIV("ご使用端末は？iPhone(1) 又は Android(2)? :")
 	rDevice = html.INPUT()
 	rStatusCRT_MSG = html.DIV("ステータス(CRT) :")
 	rStatusCRT = html.INPUT()
-	rSkillCRT_MSG = html.DIV("クリティカルUp Lv :")
+	rSkillCRT_MSG = html.DIV("クリティカルアップ Lv :")
 	rSkillCRT = html.INPUT()
 	rEQCRT_MSG =  html.DIV("クリティカル率+ :")
 	rEQCRT = html.INPUT()
@@ -149,12 +149,12 @@ main()
 </script>
 	<h2 id="TITLE"></h2>
 	<div>
-		Tips:<br>
-			「ご使用端末」には1でiOS、2でAndroidです<br>
-			「ステータス(CRT)」にはステータスの「CRT」の値を入れてね(ない場合は空欄でOK)<br>
-			「クリティカルUp Lv」にはバトルスキルのクリティカル率 Upのレベルを入れてね<br>
-			「クリティカル率+」には武器や鎧やクリスタ、エンチャントやスキルの合計クリティカル値を入れてね<br>
-			「クリティカル率(%)+」には武器や鎧やクリスタ、エンチャントやスキルの合計クリティカル値(%)を入れてね<br><br>
+		注意事項:<br>
+			「ご使用端末」には1でiPhone、2でAndroidです<br>
+			「ステータス(CRT)」にはステータスの「CRT」の値を入れてください(ない場合は空欄も可)<br>
+			「クリティカルアップ Lv」にはバトルスキルのクリティカル率アップのレベルを入れてください<br>
+			「クリティカル率+」には武器や鎧やクリスタ、エンチャントやスキルの合計クリティカル値を入れてください<br>
+			「クリティカル率(%)+」には武器や鎧やクリスタ、エンチャントやスキルの合計クリティカル値(%)を入れてください<br><br>
 	</div>
 	<div id="text_field"></div><br>
 	<div id="RESULTs"><h2 id="RESULT" style="color: red;"></h2></div>

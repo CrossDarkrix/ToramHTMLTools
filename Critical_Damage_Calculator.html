@@ -9,6 +9,7 @@
     src="https://cdn.jsdelivr.net/npm/brython@3.9/brython_stdlib.js">
 </script>
 <style type="text/css">
+@media only screen and (max-width: 750px) {
 body{
 	background-color: #2b2b2b;
 	color: #e4cfcf;
@@ -65,6 +66,59 @@ a{
 div#text_field{
 	font-size: 35px;
 	}
+}
+a:link { color: #e4d7a6; }
+a:visited { color: #e4d7a6; }
+a:hover { color: #e4d7a6; }
+a:active { color: #e4d7a6; }
+a{
+	font-family: sans-serif;
+	font-size: 18px;
+	}
+body{
+	background-color: #2b2b2b;
+	color: #e4cfcf;
+	font-size: 18px;
+}
+button{
+	background-color: #4f4f4f;
+	color: #e4cfcf;
+	font-size: 18px;
+	width: 150px;
+	height: 50px;
+	outline: 0;
+	}
+div{
+	font-size: 18px;
+	}
+input{
+	font: sans-serif;
+	font-size: 18px;
+	width: 200px;
+	height: 35px;
+	padding: 0.3em;
+	transition: 0.3s;
+	color: #d3d3d3;
+	border: none;
+	border-bottom: 2px solid #1b2538;
+	background-color: #463939;
+	outline-color: #343434;
+	outline-style: groove;
+	outline-width: 4.1px;
+	}
+div#RESULTs{
+	border: 2px groove;
+	color: #4f4f4f;
+	width: 620px;
+	height: 60px;
+}
+h2#RESULT{
+	font-size: 30px;
+	display:inline; 
+	width: 550px;
+	height: 80px;
+	color: red;
+}
 </style>
 </head>
 <body onload="brython()">

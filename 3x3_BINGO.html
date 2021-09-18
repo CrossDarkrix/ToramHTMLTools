@@ -96,7 +96,7 @@ def main():
 		maxNum = 20
 		RangeD = list(range(minNum, maxNum))
 
-		Num = random.sample(RangeD, 8)
+		Num = random.sample(RangeD, 9)
 		if Num[0] <= 9:
 			Num[0] = '0' + str(Num[0])
 		if Num[1] <= 9:
@@ -113,10 +113,12 @@ def main():
 			Num[6] = '0' + str(Num[6])
 		if Num[7] <= 9:
 			Num[7] = '0' + str(Num[7])
+		if Num[8] <= 9:
+			Num[8] = '0' + str(Num[8])
 
 		BingData2 = """{h1}  {h2}  {h3}
-{h4}  ●  {h5}
-{h6}  {h7}  {h8}""".format(h1=Num[0], h2=Num[1], h3=Num[2], h4=Num[3], h5=Num[4], h6=Num[5], h7=Num[6], h8=Num[7])
+{h4}  {h9}  {h5}
+{h6}  {h7}  {h8}""".format(h1=Num[0], h2=Num[1], h3=Num[2], h4=Num[3], h5=Num[4], h6=Num[5], h7=Num[6], h8=Num[7], h9=Num[8])
 
 		document["subTITLE1"] <= "B"
 		document["subTITLE2"] <= "I"
@@ -127,7 +129,7 @@ def main():
 		document["RESULT2"] <= Num[1]
 		document["RESULT3"] <= Num[2]
 		document["RESULT4"] <= Num[3]
-		document["RESULT5"] <= "○"
+		document["RESULT5"] <= Num[8]
 		document["RESULT6"] <= Num[4]
 		document["RESULT7"] <= Num[5]
 		document["RESULT8"] <= Num[6]

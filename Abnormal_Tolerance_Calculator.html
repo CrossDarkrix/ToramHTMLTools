@@ -117,43 +117,55 @@ def main():
 		aclear()
 		dclear()
 		try:
-			stutus = int(STMEN.value)
-			document["DefMEN"] <= "MEN: " + stutus
+			if STMEN.value == '':
+				STMEN.value = '255'
+				document["DefMEN"] <= "MEN: 255"
+				stutus = 255
+			else:
+				stutus = int(STMEN.value)
+				document["DefMEN"] <= "MEN: " + str(stutus)
+			if m1.value == '':
+				m1.value = '0'
+				MENADD_1 = 0
+			else:
+				MENADD_1 = int(m1.value)
+			if m2.value == '':
+				m2.value = '0'
+				MENADD_2 = 0
+			else:
+				MENADD_2 = int(m1.value)
+			if m3.value == '':
+				m3.value = '0'
+				MENADD_3 = 0
+			else:
+				MENADD_3 = int(m3.value)
+			if m4.value == '':
+				m4.value = '0'
+				MENADD_4 = 0
+			else:
+				MENADD_4 = int(m4.value)
+			if m5.value == '':
+				m5.value = '0'
+				MENADD_5 = 0
+			else:
+				MENADD_5 = int(m5.value)
+			if m6.value == '':
+				m6.value = '0'
+				MENADD_6 = 0
+			else:
+				MENADD_6 = int(m6.value)
+			if m7.value == '':
+				m7.value = '0'
+				MENADD_7 = 0
+			else:
+				MENADD_7 = int(m7.value)
+			if m8.value == '':
+				m8.value = '0'
+				MENADD_8 = 0
+			else:
+				MENADD_8 = int(m8.value)
 		except:
-			document["DefMEN"] <= "MEN: 255"
-			stutus = 255
-		try:
-			MENADD_1 = int(m1.value)
-		except:
-			MENADD_1 = int("0")
-		try:
-			MENADD_2 = int(m2.value)
-		except:
-			MENADD_2 = int("0")
-		try:
-			MENADD_3 = int(m3.value)
-		except:
-			MENADD_3 = int("0")
-		try:
-			MENADD_4 = int(m4.value)
-		except:
-			MENADD_4 = int("0")
-		try:
-			MENADD_5 = int(m5.value)
-		except:
-			MENADD_5 = int("0")
-		try:
-			MENADD_6 = int(m6.value)
-		except:
-			MENADD_6 = int("0")
-		try:
-			MENADD_7 = int(m7.value)
-		except:
-			MENADD_7 = int("0")
-		try:
-			MENADD_8 = int(m8.value)
-		except:
-			MENADD_8 = int("0")
+			document["RESULT"] <= "不明なエラーです。"
 		fmen = str(int(MENADD_1 + MENADD_2 + MENADD_3 + MENADD_4 + MENADD_5 + MENADD_6 + MENADD_7 + MENADD_8 + (stutus / 3.4)))
 		document["RESULT"] <= "あなたの異常耐性率は" + fmen + "%です。"
 main()

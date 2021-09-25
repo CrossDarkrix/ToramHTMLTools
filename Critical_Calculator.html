@@ -75,7 +75,7 @@ defCRT = int("25")
 SELECTOR_Field = document["Slector_Field"]
 
 def Selector():
-	rDevice_MSG = html.DIV("ご使用端末は？iPhone(1) 又は Android(2) :")
+	rDevice_MSG = html.DIV("ご使用端末は？iPhone 又は Android :")
 	rSubmit_1 = html.BUTTON("iPhone")
 	rSubmit_2 = html.BUTTON("Android")
 	SELECTOR_Field <= rDevice_MSG + html.BR() + rSubmit_1 + '  ' +  rSubmit_2 + html.BR() + html.BR()

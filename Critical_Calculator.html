@@ -78,7 +78,7 @@ def Selector():
 	rDevice_MSG = html.DIV("ご使用端末は？iPhone 又は Android :")
 	rSubmit_1 = html.BUTTON("iPhone")
 	rSubmit_2 = html.BUTTON("Android")
-	SELECTOR_Field <= rDevice_MSG + html.BR() + rSubmit_1 + '  ' +  rSubmit_2 + html.BR() + html.BR()
+	SELECTOR_Field <= rDevice_MSG + rSubmit_1 + '  ' +  rSubmit_2 + html.BR() + html.BR()
 	return rSubmit_1, rSubmit_2
 
 def Crtical():

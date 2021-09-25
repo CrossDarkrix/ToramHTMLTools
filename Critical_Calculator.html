@@ -70,12 +70,18 @@ a{
 from browser import document, html, bind
 import math, sys
 document["TITLE"] <= "クリティカル計算ツール"
-TEXT_Feild = document["text_field"]
+TEXT_Field = document["text_field"]
 defCRT = int("25")
+SELECTOR_Field = document["Slector_Field"]
+
+def Selector():
+	rDevice_MSG = html.DIV("ご使用端末は？iPhone(1) 又は Android(2) :")
+	rSubmit_1 = html.BUTTON("iPhone")
+	rSubmit_2 = html.BUTTON("Android")
+	SELECTOR_Field <= rDevice_MSG + html.BR() + rSubmit_1 + '  ' +  rSubmit_2 + html.BR() + html.BR()
+	return rSubmit_1, rSubmit_2
 
 def Crtical():
-	rDevice_MSG = html.DIV("ご使用端末は？iPhone(1) 又は Android(2) :")
-	rDevice = html.INPUT()
 	rStatusCRT_MSG = html.DIV("ステータス(CRT) :")
 	rStatusCRT = html.INPUT()
 	rSkillCRT_MSG = html.DIV("クリティカルアップ Lv :")
@@ -86,70 +92,124 @@ def Crtical():
 	rEQsCRT = html.INPUT()
 	Submit_BTNs = html.BUTTON("計算する")
 	
-	TEXT_Feild <= rDevice_MSG + rDevice + rStatusCRT_MSG + rStatusCRT + rSkillCRT_MSG + rSkillCRT + rEQCRT_MSG + rEQCRT + rEQsCRT_MSG + rEQsCRT + html.BR() + html.BR() + Submit_BTNs
-	rDevice.focus()
+	TEXT_Field <= rStatusCRT_MSG + rStatusCRT + rSkillCRT_MSG + rSkillCRT + rEQCRT_MSG + rEQCRT + rEQsCRT_MSG + rEQsCRT + html.BR() + html.BR() + Submit_BTNs
 	rStatusCRT.focus()
 	rSkillCRT.focus()
 	rEQCRT.focus()
 	rEQsCRT.focus()
 	
-	return rDevice, rStatusCRT, rSkillCRT, rEQCRT, rEQsCRT, Submit_BTNs
+	return rStatusCRT, rSkillCRT, rEQCRT, rEQsCRT, Submit_BTNs
 
 def cclear():
 	document["RESULT"].clear()
 
-def main():
-	Device, StatusCRT, SkillCRT, EQCRT, EQsCRT, Submit_BTN = Crtical()
-	@bind(Submit_BTN,"click")
-	def click(cl):
-		cclear()
-		try:
-			Dev = Device.value
-		except:
-			Dev = "1"
-		try:
-			StCRT = int(StatusCRT.value)
-		except:
-			StCRT = 1
-		try:
-			SkCTRlv = int(SkillCRT.value)
-		except:
-			SkCTRlv = 1
-		try:
-			ECrtValue = int(EQCRT.value)
-		except:
-			ECrtValue = 1
-		try:
-			EsCrtValue = int(EQsCRT.value)
-		except:
-			EsCrtValue = 1
+def Text_Field_Clear():
+	document["text_field"].clear()
 
-		if SkCTRlv == 1:
-			SCr = 1
-		if SkCTRlv == 2:
-			SCr = 1
-		if SkCTRlv == 3:
-			SCr = 2
-		if SkCTRlv == 4:
-			SCr = 2
-		if SkCTRlv == 5:
-			SCr = 3
-		if SkCTRlv == 6:
-			SCr = 3
-		if SkCTRlv == 7:
-			SCr = 4
-		if SkCTRlv == 8:
-			SCr = 4
-		if SkCTRlv == 9:
-			SCr = 5
-		if SkCTRlv == 10:
-			SCr = 5
-		if Dev == "1":
-			DeviceCals = str(math.floor((defCRT+math.floor(StCRT/3.3999))*((1+0.01*EsCrtValue)*100)/100)+ECrtValue+SCr)
-		elif Dev == "2":
-			DeviceCals = str(math.floor((defCRT+math.floor(StCRT/3.4001))*((1+0.01*EsCrtValue)*100)/100)+ECrtValue+SCr)
-		
-		document["RESULT"] <= "あなたのクリティカル率は{}です。".format(DeviceCals)
+def main():
+	SUBMITBTN1, SUBMITBTN2 = Selector()
+	@bind(SUBMITBTN1, "click")
+	def iPhone_Click(cl):
+		Text_Field_Clear()
+		cclear()
+		StatusCRT, SkillCRT, EQCRT, EQsCRT, Submit_BTN = Crtical()
+		@bind(Submit_BTN, "click")
+		def Clcik(cls):
+			cclear()
+			if StatusCRT.value == '':
+				StatusCRT.value = '1'
+				StCRT = 1
+			else:
+				StCRT = int(StatusCRT.value)
+			if SkillCRT.value == '':
+				SkillCRT.value = '1'
+				SkCTRlv = 1
+			else:
+				SkCTRlv = int(SkillCRT.value)
+			if EQCRT.value == '':
+				EQCRT.value = '1'
+				ECrtValue = 1
+			else:
+				ECrtValue = int(EQCRT.value)
+			if EQsCRT.value == '':
+				EQsCRT.value = '1'
+				EsCrtValue = 1
+			else:
+				EsCrtValue = int(EQsCRT.value)
+			if SkCTRlv == 1:
+				SCr = 1
+			if SkCTRlv == 2:
+				SCr = 1
+			if SkCTRlv == 3:
+				SCr = 2
+			if SkCTRlv == 4:
+				SCr = 2
+			if SkCTRlv == 5:
+				SCr = 3
+			if SkCTRlv == 6:
+				SCr = 3
+			if SkCTRlv == 7:
+				SCr = 4
+			if SkCTRlv == 8:
+				SCr = 4
+			if SkCTRlv == 9:
+				SCr = 5
+			if SkCTRlv == 10:
+				SCr = 5
+			iPhone_Calcs = str(math.floor((defCRT+math.floor(StCRT/3.3999))*((1+0.01*EsCrtValue)*100)/100)+ECrtValue+SCr)
+			document["RESULT"] <= "あなたのクリティカル率は{}です。".format(iPhone_Calcs)
+
+	@bind(SUBMITBTN2, "click")
+	def Android_Click(cl):
+		Text_Field_Clear()
+		cclear()
+		StatusCRT, SkillCRT, EQCRT, EQsCRT, Submit_BTN = Crtical()
+		@bind(Submit_BTN, "click")
+		def Clcik(cls):
+			cclear()
+			if StatusCRT.value == '':
+				StatusCRT.value = '1'
+				StCRT = 1
+			else:
+				StCRT = int(StatusCRT.value)
+			if SkillCRT.value == '':
+				SkillCRT.value = '1'
+				SkCTRlv = 1
+			else:
+				SkCTRlv = int(SkillCRT.value)
+			if EQCRT.value == '':
+				EQCRT.value = '1'
+				ECrtValue = 1
+			else:
+				ECrtValue = int(EQCRT.value)
+			if EQsCRT.value == '':
+				EQsCRT.value = '1'
+				EsCrtValue = 1
+			else:
+				EsCrtValue = int(EQsCRT.value)
+			if SkCTRlv == 1:
+				SCr = 1
+			if SkCTRlv == 2:
+				SCr = 1
+			if SkCTRlv == 3:
+				SCr = 2
+			if SkCTRlv == 4:
+				SCr = 2
+			if SkCTRlv == 5:
+				SCr = 3
+			if SkCTRlv == 6:
+				SCr = 3
+			if SkCTRlv == 7:
+				SCr = 4
+			if SkCTRlv == 8:
+				SCr = 4
+			if SkCTRlv == 9:
+				SCr = 5
+			if SkCTRlv == 10:
+				SCr = 5
+			Android_Calcs = str(math.floor((defCRT+math.floor(StCRT/3.4001))*((1+0.01*EsCrtValue)*100)/100)+ECrtValue+SCr)
+			document["RESULT"] <= "あなたのクリティカル率は{}です。".format(Android_Calcs)
+
 main()
 </script>
 	<h4 style="display: inline;"><a href="https://crossdarkrix.github.io/ToramHTMLTools/" style="display: inline;">トップページに戻る</a></h4>
@@ -162,6 +222,7 @@ main()
 			「クリティカル率＋」には武器や鎧やクリスタ、エンチャントやスキルの合計クリティカル値を入れてください<br>
 			「クリティカル率(%)＋」には武器や鎧やクリスタ、エンチャントやスキルの合計クリティカル値(%)を入れてください<br><br>
 	</div>
+	<div id="Slector_Field"></div><br>
 	<div id="text_field"></div><br>
 	<div id="RESULTs"><h2 id="RESULT" style="color: red;"></h2></div>
 		<h4><br><br><br>

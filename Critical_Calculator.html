@@ -175,8 +175,8 @@ def main():
 			else:
 				StCRT = int(StatusCRT.value)
 			if SkillCRT.value == '':
-				SkillCRT.value = '1'
-				SkCTRlv = 1
+				SkillCRT.value = '0'
+				SkCTRlv = 0
 			else:
 				SkCTRlv = int(SkillCRT.value)
 			if EQCRT.value == '':
@@ -189,6 +189,8 @@ def main():
 				EsCrtValue = 1
 			else:
 				EsCrtValue = int(EQsCRT.value)
+			if SkCTRlv == 0:
+				SCr = 0
 			if SkCTRlv == 1:
 				SCr = 1
 			if SkCTRlv == 2:

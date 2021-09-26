@@ -116,50 +116,53 @@ def main():
 		@bind(Submit_BTN, "click")
 		def Clcik(cls):
 			cclear()
-			if StatusCRT.value == '':
-				StatusCRT.value = '1'
-				StCRT = 1
-			else:
-				StCRT = int(StatusCRT.value)
-			if SkillCRT.value == '':
-				SkillCRT.value = '0'
-				SkCTRlv = 0
-			else:
-				SkCTRlv = int(SkillCRT.value)
-			if EQCRT.value == '':
-				EQCRT.value = '0'
-				ECrtValue = 0
-			else:
-				ECrtValue = int(EQCRT.value)
-			if EQsCRT.value == '':
-				EQsCRT.value = '0'
-				EsCrtValue = 0
-			else:
-				EsCrtValue = int(EQsCRT.value)
-			if SkCTRlv == 0:
-				SCr = 0
-			if SkCTRlv == 1:
-				SCr = 1
-			if SkCTRlv == 2:
-				SCr = 1
-			if SkCTRlv == 3:
-				SCr = 2
-			if SkCTRlv == 4:
-				SCr = 2
-			if SkCTRlv == 5:
-				SCr = 3
-			if SkCTRlv == 6:
-				SCr = 3
-			if SkCTRlv == 7:
-				SCr = 4
-			if SkCTRlv == 8:
-				SCr = 4
-			if SkCTRlv == 9:
-				SCr = 5
-			if SkCTRlv == 10:
-				SCr = 5
-			iPhone_Calcs = str(math.floor((defCRT+math.floor(StCRT/3.3999))*((1+0.01*EsCrtValue)*100)/100)+ECrtValue+SCr)
-			document["RESULT"] <= "あなたのクリティカル率は{}です。".format(iPhone_Calcs)
+			try:
+				if StatusCRT.value == '':
+					StatusCRT.value = '1'
+					StCRT = 1
+				else:
+					StCRT = int(StatusCRT.value)
+				if SkillCRT.value == '':
+					SkillCRT.value = '0'
+					SkCTRlv = 0
+				else:
+					SkCTRlv = int(SkillCRT.value)
+				if EQCRT.value == '':
+					EQCRT.value = '0'
+					ECrtValue = 0
+				else:
+					ECrtValue = int(EQCRT.value)
+				if EQsCRT.value == '':
+					EQsCRT.value = '0'
+					EsCrtValue = 0
+				else:
+					EsCrtValue = int(EQsCRT.value)
+				if SkCTRlv == 0:
+					SCr = 0
+				if SkCTRlv == 1:
+					SCr = 1
+				if SkCTRlv == 2:
+					SCr = 1
+				if SkCTRlv == 3:
+					SCr = 2
+				if SkCTRlv == 4:
+					SCr = 2
+				if SkCTRlv == 5:
+					SCr = 3
+				if SkCTRlv == 6:
+					SCr = 3
+				if SkCTRlv == 7:
+					SCr = 4
+				if SkCTRlv == 8:
+					SCr = 4
+				if SkCTRlv == 9:
+					SCr = 5
+				if SkCTRlv == 10:
+					SCr = 5
+				iPhone_Calcs = str(math.floor((defCRT+math.floor(StCRT/3.3999))*((1+0.01*EsCrtValue)*100)/100)+ECrtValue+SCr)
+				document["RESULT"] <= "あなたのクリティカル率は{}です。".format(iPhone_Calcs)
+			except:
+				document["RESULT"] <= "エラー。"
 
 	@bind(SUBMITBTN2, "click")
 	def Android_Click(cl):
@@ -169,50 +172,53 @@ def main():
 		@bind(Submit_BTN, "click")
 		def Clcik(cls):
 			cclear()
-			if StatusCRT.value == '':
-				StatusCRT.value = '1'
-				StCRT = 1
-			else:
-				StCRT = int(StatusCRT.value)
-			if SkillCRT.value == '':
-				SkillCRT.value = '0'
-				SkCTRlv = 0
-			else:
-				SkCTRlv = int(SkillCRT.value)
-			if EQCRT.value == '':
-				EQCRT.value = '0'
-				ECrtValue = 0
-			else:
-				ECrtValue = int(EQCRT.value)
-			if EQsCRT.value == '':
-				EQsCRT.value = '0'
-				EsCrtValue = 0
-			else:
-				EsCrtValue = int(EQsCRT.value)
-			if SkCTRlv == 0:
-				SCr = 0
-			if SkCTRlv == 1:
-				SCr = 1
-			if SkCTRlv == 2:
-				SCr = 1
-			if SkCTRlv == 3:
-				SCr = 2
-			if SkCTRlv == 4:
-				SCr = 2
-			if SkCTRlv == 5:
-				SCr = 3
-			if SkCTRlv == 6:
-				SCr = 3
-			if SkCTRlv == 7:
-				SCr = 4
-			if SkCTRlv == 8:
-				SCr = 4
-			if SkCTRlv == 9:
-				SCr = 5
-			if SkCTRlv == 10:
-				SCr = 5
-			Android_Calcs = str(math.floor((defCRT+math.floor(StCRT/3.4001))*((1+0.01*EsCrtValue)*100)/100)+ECrtValue+SCr)
-			document["RESULT"] <= "あなたのクリティカル率は{}です。".format(Android_Calcs)
+			try:
+				if StatusCRT.value == '':
+					StatusCRT.value = '1'
+					StCRT = 1
+				else:
+					StCRT = int(StatusCRT.value)
+				if SkillCRT.value == '':
+					SkillCRT.value = '0'
+					SkCTRlv = 0
+				else:
+					SkCTRlv = int(SkillCRT.value)
+				if EQCRT.value == '':
+					EQCRT.value = '0'
+					ECrtValue = 0
+				else:
+					ECrtValue = int(EQCRT.value)
+				if EQsCRT.value == '':
+					EQsCRT.value = '0'
+					EsCrtValue = 0
+				else:
+					EsCrtValue = int(EQsCRT.value)
+				if SkCTRlv == 0:
+					SCr = 0
+				if SkCTRlv == 1:
+					SCr = 1
+				if SkCTRlv == 2:
+					SCr = 1
+				if SkCTRlv == 3:
+					SCr = 2
+				if SkCTRlv == 4:
+					SCr = 2
+				if SkCTRlv == 5:
+					SCr = 3
+				if SkCTRlv == 6:
+					SCr = 3
+				if SkCTRlv == 7:
+					SCr = 4
+				if SkCTRlv == 8:
+					SCr = 4
+				if SkCTRlv == 9:
+					SCr = 5
+				if SkCTRlv == 10:
+					SCr = 5
+				Android_Calcs = str(math.floor((defCRT+math.floor(StCRT/3.4001))*((1+0.01*EsCrtValue)*100)/100)+ECrtValue+SCr)
+				document["RESULT"] <= "あなたのクリティカル率は{}です。".format(Android_Calcs)
+			except:
+				document["RESULT"] <= "エラー。"
 
 main()
 </script>

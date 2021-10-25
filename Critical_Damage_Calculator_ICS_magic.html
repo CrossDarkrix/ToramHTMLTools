@@ -15,7 +15,7 @@ body{
 input{
 	font: sans-serif;
 	font-size: 25px;
-	width: 380px;
+	width: 60px;
 	height: 40px;
 	padding: 0.3em;
 	transition: 0.3s;
@@ -28,6 +28,10 @@ input{
 	outline-width: 4.1px;
 	}
 div{
+	font-size: 25px;
+	}
+i{
+	display:inline;
 	font-size: 25px;
 	}
 button{
@@ -52,6 +56,19 @@ h2#RESULT{
 	height: 80px;
 	color: red;
 }
+div#SubTotals{
+	border: 2px groove;
+	color: #4f4f4f;
+	width: 390px;
+	height: 50px;
+	}
+h3#SubTotal{
+	font-size: 23px;
+	display:inline; 
+	width: 390px;
+	height: 50px;
+	color: red;
+	}
 a:link { color: #e4d7a6; }
 a:visited { color: #e4d7a6; }
 a:hover { color: #e4d7a6; }
@@ -60,7 +77,7 @@ a{
 	font-family: sans-serif;
 	font-size: 23px;
 	}
-div#text_field{
+i#text_field{
 	font-size: 35px;
 	}
 </style>
@@ -72,45 +89,45 @@ from browser import document, html, bind
 document["TITLE"] <= "必要STR値逆算ツール"
 TEXT_Feild = document["text_field"]
 def back_cd():
-	W_cd_MSG = html.DIV("武器のクリティカルダメージ:")
+	W_cd_MSG = html.I("武器のクリティカルダメージ:")
 	W_cd = html.INPUT()
-	Wcd_P_MSG = html.DIV("武器のクリティカルダメージ(％):")
+	Wcd_P_MSG = html.I("武器のクリティカルダメージ(％):")
 	Wcd_P = html.INPUT()
-	SubW_cd_MSG = html.DIV("サブ武器のクリティカルダメージ:")
+	SubW_cd_MSG = html.I("サブ武器のクリティカルダメージ:")
 	SubW_cd = html.INPUT()
-	SubW_cdP_MSG = html.DIV("サブ武器のクリティカルダメージ(％):")
+	SubW_cdP_MSG = html.I("サブ武器のクリティカルダメージ(％):")
 	SubW_cdP = html.INPUT()
-	B_cd_MSG = html.DIV("体装備のクリティカルダメージ:")
+	B_cd_MSG = html.I("体装備のクリティカルダメージ:")
 	B_cd = html.INPUT()
-	B_cdP_MSG = html.DIV("体装備のクリティカルダメージ(％):")
+	B_cdP_MSG = html.I("体装備のクリティカルダメージ(％):")
 	B_cdP = html.INPUT()
-	Addis_cd_MSG = html.DIV("追加装備のクリティカルダメージ:")
+	Addis_cd_MSG = html.I("追加装備のクリティカルダメージ:")
 	Addis_cd = html.INPUT()
-	Addis_cdP_MSG = html.DIV("追加装備のクリティカルダメージ(％):")
+	Addis_cdP_MSG = html.I("追加装備のクリティカルダメージ(％):")
 	Addis_cdP = html.INPUT()
-	SPcd_MSG = html.DIV("特殊装備のクリティカルダメージ:")
+	SPcd_MSG = html.I("特殊装備のクリティカルダメージ:")
 	SPcd = html.INPUT()
-	SPcdP_MSG = html.DIV("特殊装備のクリティカルダメージ(％):")
+	SPcdP_MSG = html.I("特殊装備のクリティカルダメージ(％):")
 	SPcdP = html.INPUT()
-	Enh_MSG = html.DIV("オシャレ装備のクリティカルダメージ:")
+	Enh_MSG = html.I("オシャレ装備のクリティカルダメージ:")
 	Enh = html.INPUT()
-	EnhP_MSG = html.DIV("オシャレ装備のクリティカルダメージ(％):")
+	EnhP_MSG = html.I("オシャレ装備のクリティカルダメージ(％):")
 	EnhP = html.INPUT()
-	ALCrs_MSG = html.DIV("クリスタの合計クリティカルダメージ:")
+	ALCrs_MSG = html.I("クリスタの合計クリティカルダメージ:")
 	ALCrs = html.INPUT()
-	ALCrsP_MSG = html.DIV("クリスタの合計クリティカルダメージ(％):")
+	ALCrsP_MSG = html.I("クリスタの合計クリティカルダメージ(％):")
 	ALCrsP = html.INPUT()
-	SkillCRTD_MSG = html.DIV("クリティカルアップのレベル:")
+	SkillCRTD_MSG = html.I("クリティカルアップのレベル:")
 	SkillCRTD = html.INPUT()
-	CK_STR_MSG = html.DIV("STR料理の値:")
+	CK_STR_MSG = html.I("STR料理の値:")
 	CK_STR = html.INPUT()
-	FK_STR_MSG = html.DIV("STR固定値:")
+	FK_STR_MSG = html.I("STR固定値:")
 	FK_STR = html.INPUT()
-	FK_STR_Percent_MSG = html.DIV("STR固定値(％):")
+	FK_STR_Percent_MSG = html.I("STR固定値(％):")
 	FK_STR_Percent = html.INPUT()
 	Submit_BTNs = html.BUTTON("計算する")
 
-	TEXT_Feild <= W_cd_MSG + W_cd + Wcd_P_MSG + Wcd_P + SubW_cd_MSG + SubW_cd + SubW_cdP_MSG + SubW_cdP + B_cd_MSG + B_cd + B_cdP_MSG + B_cdP + Addis_cd_MSG + Addis_cd + Addis_cdP_MSG + Addis_cdP + SPcd_MSG + SPcd + SPcdP_MSG + SPcdP + Enh_MSG + Enh + EnhP_MSG + EnhP + ALCrs_MSG + ALCrs + ALCrsP_MSG + ALCrsP + SkillCRTD_MSG + SkillCRTD + CK_STR_MSG + CK_STR + FK_STR_MSG + FK_STR + FK_STR_Percent_MSG + FK_STR_Percent + html.BR() + html.BR() + Submit_BTNs
+	TEXT_Feild <= W_cd_MSG + ' ' + W_cd + html.BR() + Wcd_P_MSG + ' ' + Wcd_P + html.BR()+ SubW_cd_MSG + ' ' + SubW_cd + html.BR() + SubW_cdP_MSG + ' ' + SubW_cdP + html.BR() + B_cd_MSG + ' ' + B_cd + html.BR() + B_cdP_MSG + ' ' + B_cdP + html.BR() + Addis_cd_MSG + ' ' + Addis_cd + html.BR() + Addis_cdP_MSG + ' ' + Addis_cdP + html.BR() + SPcd_MSG + ' ' + SPcd + html.BR() + SPcdP_MSG + ' ' + SPcdP + html.BR() + Enh_MSG + ' ' + Enh + html.BR() + EnhP_MSG + ' ' + EnhP + html.BR() + ALCrs_MSG + ' ' + ALCrs + html.BR() + ALCrsP_MSG + ' ' + ALCrsP + html.BR() + SkillCRTD_MSG + ' ' + SkillCRTD + html.BR() + CK_STR_MSG + ' ' + CK_STR + html.BR() + FK_STR_MSG + ' ' + FK_STR + html.BR() + FK_STR_Percent_MSG + ' ' + FK_STR_Percent + html.BR() + html.BR() + html.BR() + Submit_BTNs
 	
 	W_cd.focus()
 	Wcd_P.focus()
@@ -220,7 +237,8 @@ def main():
 				sSTR = round((iALLSTR - int(Cook_STR.value) - int(FixedSTR.value)) / (1 + (int(FixedSTR_Percent.value) / 100)))
 		else:
 			sSTR = round((iALLSTR - int(Cook_STR.value) - int(FixedSTR.value)) / (1 + (int(FixedSTR_Percent.value) / 100)))
-		
+
+		document["SubTotal"] <= "クリティカルダメージ: {}％と{}".format(ALLCDPercent, ALLCD)
 		document["RESULT"] <= "今のパラメータに必要なSTRの値: {}".format(sSTR)
 main()
 </script>
@@ -232,6 +250,7 @@ main()
 			「オシャレ装備のクリティカルダメージ」にはオシャレ装備のエンチャントのクリティカルダメージの値を入れてください<br><br>
 	</div>
 	<div id="text_field"></div><br>
+	<div id="SubTotals"><h3 id="SubTotal"></h3></div>
 	<div id="RESULTs"><h2 id="RESULT"></h2></div>
         </body>
 

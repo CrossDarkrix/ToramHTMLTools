@@ -155,11 +155,15 @@ def back_cd():
 def sclear():
 	document["RESULT"].clear()
 
+def SubTClear():
+	document["SubTotal"].clear()
+
 def main():
 	WeaponCD, WeaponCD_Percent, SubWeaponCD, SubWeaponCD_Percent, BodyEQuipmentCD, BodyEQuipmentCD_Percent, AdditionalEquipmentCD, AdditionalEquipmentCD_Percent, SPecialEquipmentCD, SPecialEquipmentCD_Percent, EnchCD, EnchCDP, AllCristalCD, AllCristalCD_Percent, SkillCD, Cook_STR, FixedSTR, FixedSTR_Percent, Smit_BTN = back_cd()
 	@bind(Smit_BTN,"click")
 	def click(cl):
 		sclear()
+		SubTClear()
 		try:
 			skillLevel = int(SkillCD.value)
 		except ValueError:

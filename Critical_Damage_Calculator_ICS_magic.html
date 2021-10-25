@@ -104,9 +104,14 @@ def back_cd():
 	SkillCRTD = html.INPUT()
 	CK_STR_MSG = html.DIV("STR料理の値:")
 	CK_STR = html.INPUT()
+	FK_STR_MSG = html.DIV("STR固定値:")
+	FK_STR = html.INPUT()
+	FK_STR_Percent_MSG = html.DIV("STR固定値(％):")
+	FK_STR_Percent = html.INPUT()
 	Submit_BTNs = html.BUTTON("計算する")
 
-	TEXT_Feild <= W_cd_MSG + W_cd + Wcd_P_MSG + Wcd_P + SubW_cd_MSG + SubW_cd + SubW_cdP_MSG + SubW_cdP + B_cd_MSG + B_cd + B_cdP_MSG + B_cdP + Addis_cd_MSG + Addis_cd + Addis_cdP_MSG + Addis_cdP + SPcd_MSG + SPcd + SPcdP_MSG + SPcdP + Enh_MSG + Enh + EnhP_MSG + EnhP + ALCrs_MSG + ALCrs + ALCrsP_MSG + ALCrsP + SkillCRTD_MSG + SkillCRTD + CK_STR_MSG + CK_STR + html.BR() + html.BR() + Submit_BTNs
+	TEXT_Feild <= W_cd_MSG + W_cd + Wcd_P_MSG + Wcd_P + SubW_cd_MSG + SubW_cd + SubW_cdP_MSG + SubW_cdP + B_cd_MSG + B_cd + B_cdP_MSG + B_cdP + Addis_cd_MSG + Addis_cd + Addis_cdP_MSG + Addis_cdP + SPcd_MSG + SPcd + SPcdP_MSG + SPcdP + Enh_MSG + Enh + EnhP_MSG + EnhP + ALCrs_MSG + ALCrs + ALCrsP_MSG + ALCrsP + SkillCRTD_MSG + SkillCRTD + CK_STR_MSG + CK_STR + FK_STR_MSG + FK_STR + FK_STR_Percent_MSG + FK_STR_Percent + html.BR() + html.BR() + Submit_BTNs
+	
 	W_cd.focus()
 	Wcd_P.focus()
 	SubW_cd.focus()
@@ -123,15 +128,18 @@ def back_cd():
 	ALCrsP.focus()
 	SkillCRTD.focus()
 	CK_STR.focus()
+	FK_STR.focus()
+	FK_STR_Percent.focus()
+	
 
-	return W_cd, Wcd_P, SubW_cd, SubW_cdP, B_cd, B_cdP, Addis_cd, Addis_cdP, SPcd, SPcdP, Enh, EnhP, ALCrs, ALCrsP, SkillCRTD, CK_STR, Submit_BTNs
+	return W_cd, Wcd_P, SubW_cd, SubW_cdP, B_cd, B_cdP, Addis_cd, Addis_cdP, SPcd, SPcdP, Enh, EnhP, ALCrs, ALCrsP, SkillCRTD, CK_STR, FK_STR, FK_STR_Percent, Submit_BTNs
 	
 
 def sclear():
 	document["RESULT"].clear()
 
 def main():
-	WeaponCD, WeaponCD_Percent, SubWeaponCD, SubWeaponCD_Percent, BodyEQuipmentCD, BodyEQuipmentCD_Percent, AdditionalEquipmentCD, AdditionalEquipmentCD_Percent, SPecialEquipmentCD, SPecialEquipmentCD_Percent, EnchCD, EnchCDP, AllCristalCD, AllCristalCD_Percent, SkillCD, Cook_STR, Smit_BTN = back_cd()
+	WeaponCD, WeaponCD_Percent, SubWeaponCD, SubWeaponCD_Percent, BodyEQuipmentCD, BodyEQuipmentCD_Percent, AdditionalEquipmentCD, AdditionalEquipmentCD_Percent, SPecialEquipmentCD, SPecialEquipmentCD_Percent, EnchCD, EnchCDP, AllCristalCD, AllCristalCD_Percent, SkillCD, Cook_STR, FixedSTR, FixedSTR_Percent, Smit_BTN = back_cd()
 	@bind(Smit_BTN,"click")
 	def click(cl):
 		sclear()
@@ -192,12 +200,17 @@ def main():
 			AllCristalCD_Percent.value = '0'
 		if Cook_STR.value == '':
 			Cook_STR.value = '0'
+		if FixedSTR.value == '':
+			FixedSTR.value = '0'
+		if FixedSTR_Percent.value == '':
+			FixedSTR_Percent.value = '0'
+		
 		ALLCD = int(WeaponCD.value) + int(SubWeaponCD.value) + int(BodyEQuipmentCD.value) + int(AdditionalEquipmentCD.value) + int(SPecialEquipmentCD.value) + int(EnchCD.value) + int(AllCristalCD.value)
 		ALLCDPercent = int(WeaponCD_Percent.value) + int(SubWeaponCD_Percent.value) + int(BodyEQuipmentCD_Percent.value) + int(AdditionalEquipmentCD_Percent.value) + int(SPecialEquipmentCD_Percent.value) + int(EnchCDP.value) + int(AllCristalCD_Percent.value) + int(SkillCrtDamage)
 		BasicCD = (300 - ALLCD) / float("1.{}".format(ALLCDPercent))
-		iALLSTR = round((BasicCD - 150) * 5)
-		sSTR = iALLSTR - int(Cook_STR.value)
-
+		iALLSTR = (BasicCD - 150) * 5
+		sSTR = round((iALLSTR - int(Cook_STR.value) - int(FixedSTR.value)) / float("1.{}".format(FixedSTR_Percent.value)))
+		
 		document["RESULT"] <= "今のパラメータがSTRに振る値: {}".format(sSTR)
 main()
 </script>

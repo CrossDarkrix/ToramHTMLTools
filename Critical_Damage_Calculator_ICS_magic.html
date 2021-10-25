@@ -59,13 +59,13 @@ h2#RESULT{
 div#SubTotals{
 	border: 2px groove;
 	color: #4f4f4f;
-	width: 390px;
+	width: 420px;
 	height: 50px;
 	}
 h3#SubTotal{
 	font-size: 23px;
 	display:inline; 
-	width: 390px;
+	width: 420px;
 	height: 50px;
 	color: red;
 	}
@@ -242,7 +242,7 @@ def main():
 		else:
 			sSTR = round((iALLSTR - int(Cook_STR.value) - int(FixedSTR.value)) / (1 + (int(FixedSTR_Percent.value) / 100)))
 
-		document["SubTotal"] <= "クリティカルダメージ: {}％と{}".format(ALLCDPercent, ALLCD)
+		document["SubTotal"] <= "合計クリティカルダメージ: {}％と{}".format(ALLCDPercent, ALLCD)
 		document["RESULT"] <= "今のパラメータに必要なSTRの値: {}".format(sSTR)
 main()
 </script>

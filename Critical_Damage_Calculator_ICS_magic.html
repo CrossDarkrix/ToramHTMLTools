@@ -1,0 +1,204 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>トーラムオンライン 必要STR値逆算計算ツール</title>
+<script type="text/javascript" src="brython/www/src/brython.js">
+</script>
+<script type="text/javascript" src="brython/www/src/brython_stdlib.js">
+</script>
+<style type="text/css">
+body{
+	background-color: #2b2b2b;
+	color: #e4cfcf;
+	font-size: 23px;
+}
+input{
+	font: sans-serif;
+	font-size: 25px;
+	width: 280px;
+	height: 40px;
+	padding: 0.3em;
+	transition: 0.3s;
+	color: #d3d3d3;
+	border: none;
+	border-bottom: 2px solid #1b2538;
+	background-color: #463939;
+	outline-color: #343434;
+	outline-style: groove;
+	outline-width: 4.1px;
+	}
+div{
+	font-size: 25px;
+	}
+button{
+	background-color: #4f4f4f;
+	color: #e4cfcf;
+	font-size: 35px;
+	width: 280px;
+	height: 60px;
+	outline: 0;
+	}
+div#RESULTs{
+	border: 2px groove;
+	color: #4f4f4f;
+	width: 620px;
+	height: 60px;
+
+}
+h2#RESULT{
+	font-size: 30px;
+	display:inline; 
+	width: 550px;
+	height: 80px;
+	color: red;
+}
+a:link { color: #e4d7a6; }
+a:visited { color: #e4d7a6; }
+a:hover { color: #e4d7a6; }
+a:active { color: #e4d7a6; }
+a{
+	font-family: sans-serif;
+	font-size: 23px;
+	}
+div#text_field{
+	font-size: 35px;
+	}
+</style>
+</head>
+<body onload="brython()">
+<script type="text/python">
+from browser import document, html, bind
+
+document["TITLE"] <= "必要STR値逆算ツール"
+TEXT_Feild = document["text_field"]
+def back_cd():
+	W_cd_MSG = html.DIV("武器のクリティカルダメージ:")
+	W_cd = html.INPUT()
+	Wcd_P_MSG = html.DIV("武器のクリティカルダメージ(％):")
+	Wcd_P = html.INPUT()
+	SubW_cd_MSG = html.DIV("サブ武器のクリティカルダメージ:")
+	SubW_cd = html.INPUT()
+	SubW_cdP_MSG = html.DIV("サブ武器のクリティカルダメージ(％):")
+	SubW_cdP = html.INPUT()
+	B_cd_MSG = html.DIV("体装備のクリティカルダメージ:")
+	B_cd = html.INPUT()
+	B_cdP_MSG = html.DIV("体装備のクリティカルダメージ(％):")
+	B_cdP = html.INPUT()
+	Addis_cd_MSG = html.DIV("追加装備のクリティカルダメージ:")
+	Addis_cd = html.INPUT()
+	Addis_cdP_MSG = html.DIV("追加装備のクリティカルダメージ(％):")
+	Addis_cdP = html.INPUT()
+	SPcd_MSG = html.DIV("特殊装備のクリティカルダメージ:")
+	SPcd = html.INPUT()
+	SPcdP_MSG = html.DIV("特殊装備のクリティカルダメージ(％):")
+	SPcdP = html.INPUT()
+	ALCrs_MSG = html.DIV("クリスタの合計クリティカルダメージ:")
+	ALCrs = html.INPUT()
+	ALCrsP_MSG = html.DIV("クリスタの合計クリティカルダメージ(％):")
+	ALCrsP = html.INPUT()
+	SkillCRTD_MSG = html.DIV("クリティカルアップのレベル:")
+	SkillCRTD = html.INPUT()
+	CK_STR_MSG = html.DIV("STR料理の値:")
+	CK_STR = html.INPUT()
+	Submit_BTNs = html.BUTTON("計算する")
+
+	TEXT_Feild <= W_cd_MSG + W_cd + Wcd_P_MSG + Wcd_P + SubW_cd_MSG + SubW_cd + SubW_cdP_MSG + SubW_cdP + B_cd_MSG + B_cd + B_cdP_MSG + B_cdP + Addis_cd_MSG + Addis_cd + Addis_cdP_MSG + Addis_cdP + SPcd_MSG + SPcd + SPcdP_MSG + SPcdP + ALCrs_MSG + ALCrs + ALCrsP_MSG + ALCrsP + SkillCRTD_MSG + SkillCRTD + CK_STR_MSG + CK_STR + html.BR() + html.BR() + Submit_BTNs
+	W_cd.focus()
+	Wcd_P.focus()
+	SubW_cd.focus()
+	SubW_cdP.focus()
+	B_cd.focus()
+	B_cdP.focus()
+	Addis_cd.focus()
+	Addis_cdP.focus()
+	SPcd.focus()
+	SPcdP.focus()
+	ALCrs.focus()
+	ALCrsP.focus()
+	SkillCRTD.focus()
+	CK_STR.focus()
+
+	return W_cd, Wcd_P, SubW_cd, SubW_cdP, B_cd, B_cdP, Addis_cd, Addis_cdP, SPcd, SPcdP, ALCrs, ALCrsP, SkillCRTD, CK_STR, Submit_BTNs
+	
+
+def sclear():
+	document["RESULT"].clear()
+
+def main():
+	WeaponCD, WeaponCD_Percent, SubWeaponCD, SubWeaponCD_Percent, BodyEQuipmentCD, BodyEQuipmentCD_Percent, AdditionalEquipmentCD, AdditionalEquipmentCD_Percent, SPecialEquipmentCD, SPecialEquipmentCD_Percent, AllCristalCD, AllCristalCD_Percent, SkillCD, Cook_STR, Smit_BTN = back_cd()
+	@bind(Smit_BTN,"click")
+	def click(cl):
+		sclear()
+		try:
+			skillLevel = int(SkillCD.value)
+		except ValueError:
+			skillLevel = 1
+
+		if skillLevel == 1:
+			SkillCrtDamage = 0
+		elif skillLevel == 2:
+			SkillCrtDamage = 1
+		elif skillLevel == 3:
+			SkillCrtDamage = 1
+		elif skillLevel == 4:
+			SkillCrtDamage = 2
+		elif skillLevel == 5:
+			SkillCrtDamage = 2
+		elif skillLevel == 6:
+			SkillCrtDamage = 3
+		elif skillLevel == 7:
+			SkillCrtDamage = 3
+		elif skillLevel == 8:
+			SkillCrtDamage = 4
+		elif skillLevel == 9:
+			SkillCrtDamage = 4
+		elif skillLevel == 10:
+			SkillCrtDamage = 5
+		else:
+			document["RESULT"] <= "エラー: バトルスキルのレベルが既定値範囲外です。"
+		if WeaponCD.value == '':
+			WeaponCD.value = '0'
+		if WeaponCD_Percent.value == '':
+			WeaponCD_Percent.value = '0'
+		if SubWeaponCD.value == '':
+			SubWeaponCD.value = '0'
+		if SubWeaponCD_Percent.value == '':
+			SubWeaponCD_Percent.value = '0'
+		if BodyEQuipmentCD.value == '':
+			BodyEQuipmentCD.value = '0'
+		if BodyEQuipmentCD_Percent.value == '':
+			BodyEQuipmentCD_Percent.value = '0'
+		if AdditionalEquipmentCD.value == '':
+			AdditionalEquipmentCD.value = '0'
+		if AdditionalEquipmentCD_Percent.value == '':
+			AdditionalEquipmentCD_Percent.value = '0'
+		if SPecialEquipmentCD.value == '':
+			SPecialEquipmentCD.value = '0'
+		if SPecialEquipmentCD_Percent.value == '':
+			SPecialEquipmentCD_Percent.value = '0'
+		if AllCristalCD.value == '':
+			AllCristalCD.value = '0'
+		if AllCristalCD_Percent.value == '':
+			AllCristalCD_Percent.value = '0'
+		if Cook_STR.value == '':
+			Cook_STR.value = '0'
+		ALLCD = int(WeaponCD.value) + int(SubWeaponCD.value) + int(BodyEQuipmentCD.value) + int(AdditionalEquipmentCD.value) + int(SPecialEquipmentCD.value) + int(AllCristalCD.value)
+		ALLCDPercent = int(WeaponCD_Percent.value) + int(SubWeaponCD_Percent.value) + int(BodyEQuipmentCD_Percent.value) + int(AdditionalEquipmentCD_Percent.value) + int(SPecialEquipmentCD_Percent.value) + int(AllCristalCD_Percent.value) + int(SkillCrtDamage)
+		BasicCD = (300 - ALLCD) / float("1.{}".format(ALLCDPercent))
+		iALLSTR = round((BasicCD - 150) * 5)
+		sSTR = iALLSTR - int(Cook_STR.value)
+
+		document["RESULT"] <= "今のパラメータがSTRに振る値: {}".format(sSTR)
+main()
+</script>
+	<h4 style="display: inline;"><a href="https://crossdarkrix.github.io/ToramHTMLTools/" style="display: inline;">トップページに戻る</a></h4>
+	<h2 id="TITLE"></h2>
+	<div>
+		注意事項:<br>
+			「クリティカルアップのレベル」にはバトルスキルのクリティカルアップのレベルを入れてください(空欄でも可)<br><br>
+	</div>
+	<div id="text_field"></div><br>
+	<div id="RESULTs"><h2 id="RESULT"></h2></div>
+        </body>
+
+    </html>

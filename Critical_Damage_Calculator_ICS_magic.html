@@ -209,6 +209,8 @@ def main():
 		ALLCDPercent = int(WeaponCD_Percent.value) + int(SubWeaponCD_Percent.value) + int(BodyEQuipmentCD_Percent.value) + int(AdditionalEquipmentCD_Percent.value) + int(SPecialEquipmentCD_Percent.value) + int(EnchCDP.value) + int(AllCristalCD_Percent.value) + int(SkillCrtDamage)
 		BasicCD = (300 - ALLCD) / float("1.{}".format(ALLCDPercent))
 		iALLSTR = (BasicCD - 150) * 5
+		if FixedSTR_Percent.value == '0':
+			sSTR = round((iALLSTR - int(Cook_STR.value) - int(FixedSTR.value))
 		sSTR = round((iALLSTR - int(Cook_STR.value) - int(FixedSTR.value)) / int(FixedSTR_Percent.value))
 		
 		document["RESULT"] <= "今のパラメータに必要なSTRの値: {}".format(sSTR)

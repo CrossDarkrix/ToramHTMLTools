@@ -111,7 +111,7 @@ def One_handed_sword(): # 片手剣
 		DEX = int(D.value)
 		STR = int(S.value)
 		Result = math_floor(ALL_Equipment + (DEX * 3 + STR) / 40)
-		document["RESULT"] <= 'あなたの安定率は: {One_H_STabillity}%です。'.format(One_H_STabillity=Result)
+		document["RESULT"] <= 'あなたの安定率は: {One_H_STabillity}％です。'.format(One_H_STabillity=Result)
 
 def TOWHANDsw():
 	s1ALL_Equipment_MSG = html.DIV("装備の安定率の合計値:")
@@ -132,7 +132,7 @@ def Tow_handed_sword(): # 両手剣
 		ALL_Equipment = int(ALL_EQ.value)
 		DEX = int(D.value)
 		Result = math_floor(ALL_Equipment + DEX / 10)
-		document["RESULT"] <= 'あなたの安定率は: {Tow_H_STabillity}%です。'.format(Tow_H_STabillity=Result)
+		document["RESULT"] <= 'あなたの安定率は: {Tow_H_STabillity}％です。'.format(Tow_H_STabillity=Result)
 
 def DUALsw():
 	s1ALL_Equipment_MSG = html.DIV("装備の安定率の合計値:")
@@ -157,7 +157,7 @@ def Dual_sword(): # 双剣
 		DEX = int(D.value)
 		STR = int(S.value)
 		Result = math_floor(ALL_Equipment + (DEX * 3 + STR) / 40)
-		document["RESULT"] <= 'あなたの安定率は: {Dual_H_STabillity}%です。'.format(Dual_H_STabillity=Result)
+		document["RESULT"] <= 'あなたの安定率は: {Dual_H_STabillity}％です。'.format(Dual_H_STabillity=Result)
 
 def KNUCKLEs():
 	s1ALL_Equipment_MSG = html.DIV("装備の安定率の合計値:")
@@ -178,7 +178,7 @@ def Knuckle(): # 拳
 		ALL_Equipment = int(ALL_EQ.value)
 		DEX = int(D.value)
 		Result = math_floor(ALL_Equipment + DEX / 40)
-		document["RESULT"] <= 'あなたの安定率は: {Knuckle_STabillity}%です。'.format(Knuckle_STabillity=Result)
+		document["RESULT"] <= 'あなたの安定率は: {Knuckle_STabillity}％です。'.format(Knuckle_STabillity=Result)
 
 def HALBERDs():
 	s1ALL_Equipment_MSG = html.DIV("装備の安定率の合計値:")
@@ -203,7 +203,7 @@ def Halberd(): # 旋風槍
 		DEX = int(D.value)
 		STR = int(S.value)
 		Result = math_floor(ALL_Equipment + (DEX + STR) / 20)
-		document["RESULT"] <= 'あなたの安定率は: {Halberd_STabillity}%です。'.format(Halberd_STabillity=Result)
+		document["RESULT"] <= 'あなたの安定率は: {Halberd_STabillity}％です。'.format(Halberd_STabillity=Result)
 
 def KATANAs():
 	s1ALL_Equipment_MSG = html.DIV("装備の安定率の合計値:")
@@ -228,7 +228,7 @@ def Katana(): # 刀
 		DEX = int(D.value)
 		STR = int(S.value)
 		Result = math_floor(ALL_Equipment + (DEX + STR * 3) / 40)
-		document["RESULT"] <= 'あなたの安定率は: {Katana_STabillity}%です。'.format(Katana_STabillity=Result)
+		document["RESULT"] <= 'あなたの安定率は: {Katana_STabillity}％です。'.format(Katana_STabillity=Result)
 
 def STAFFs():
 	s1ALL_Equipment_MSG = html.DIV("装備の安定率の合計値:")
@@ -249,7 +249,7 @@ def Staff(): # 杖
 		ALL_Equipment = int(ALL_EQ.value)
 		STR = int(S.value)
 		Result = math_floor(ALL_Equipment + STR / 20)
-		document["RESULT"] <= 'あなたの安定率は: {Staff_STabillity}%です。'.format(Staff_STabillity=Result)
+		document["RESULT"] <= 'あなたの安定率は: {Staff_STabillity}％です。'.format(Staff_STabillity=Result)
 
 def MAGICDEVICEs():
 	s1ALL_Equipment_MSG = html.DIV("装備の安定率の合計値:")
@@ -270,7 +270,7 @@ def Magic_Devices(): # 魔導具
 		ALL_Equipment = int(ALL_EQ.value)
 		DEX = int(D.value)
 		Result = math_floor(ALL_Equipment + DEX / 10)
-		document["RESULT"] <= 'あなたの安定率は: {MD_STabillity}%です。'.format(MD_STabillity=Result)
+		document["RESULT"] <= 'あなたの安定率は: {MD_STabillity}％です。'.format(MD_STabillity=Result)
 
 def BOWs():
 	s1ALL_Equipment_MSG = html.DIV("装備の安定率の合計値:")
@@ -299,7 +299,7 @@ def Bow(): # 弓
 		DEX = int(D.value)
 		STR = int(S.value)
 		Result = math_floor(ALL_Equipment + Arrow_STabillity + (DEX + STR) / 20)
-		document["RESULT"] <= 'あなたの安定率は: {Bow_STabillity}%です。'.format(Bow_STabillity=Result)
+		document["RESULT"] <= 'あなたの安定率は: {Bow_STabillity}％です。'.format(Bow_STabillity=Result)
 
 def BOWGUNs():
 	s1ALL_Equipment_MSG = html.DIV("装備の安定率の合計値:")
@@ -324,7 +324,7 @@ def BowGun(): # 自動弓
 		Arrow_STabillity = int(Arrow.value)
 		STR = int(S.value)
 		Result = math_floor(ALL_Equipment + Arrow_STabillity / 2 + STR / 20)
-		document["RESULT"] <= 'あなたの安定率は: {Bowgun_STabillity}%です。'.format(Bowgun_STabillity=Result)
+		document["RESULT"] <= 'あなたの安定率は: {Bowgun_STabillity}％です。'.format(Bowgun_STabillity=Result)
 
 def main_d():
 	s1Selector_MSG = html.DIV("計算したい職の番号:")
@@ -401,7 +401,7 @@ main()
 	8. 魔導具<br>
 	9. 弓&ensp;&ensp;&ensp;&ensp;
 	10. 自動弓<br>
-(「装備の安定率の合計値」には<br>武器についている「ATK (??%)」の<br>()内の数値と装備で盛っている<br>安定率を入れてください。)<br>
+(「装備の安定率の合計値」には<br>武器についている「ATK (??％)」の<br>()内の数値と装備で盛っている<br>安定率を入れてください。)<br>
 	</div>
 	</h3>
 	<h3>

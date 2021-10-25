@@ -92,6 +92,10 @@ def back_cd():
 	SPcd = html.INPUT()
 	SPcdP_MSG = html.DIV("特殊装備のクリティカルダメージ(％):")
 	SPcdP = html.INPUT()
+	Enh_MSG = html.DIV("オシャレ装備のクリティカルダメージ:")
+	Enh = html.INPUT()
+	EnhP_MSG = html.DIV("オシャレ装備のクリティカルダメージ(％):")
+	EnhP = html.INPUT()
 	ALCrs_MSG = html.DIV("クリスタの合計クリティカルダメージ:")
 	ALCrs = html.INPUT()
 	ALCrsP_MSG = html.DIV("クリスタの合計クリティカルダメージ(％):")
@@ -102,7 +106,7 @@ def back_cd():
 	CK_STR = html.INPUT()
 	Submit_BTNs = html.BUTTON("計算する")
 
-	TEXT_Feild <= W_cd_MSG + W_cd + Wcd_P_MSG + Wcd_P + SubW_cd_MSG + SubW_cd + SubW_cdP_MSG + SubW_cdP + B_cd_MSG + B_cd + B_cdP_MSG + B_cdP + Addis_cd_MSG + Addis_cd + Addis_cdP_MSG + Addis_cdP + SPcd_MSG + SPcd + SPcdP_MSG + SPcdP + ALCrs_MSG + ALCrs + ALCrsP_MSG + ALCrsP + SkillCRTD_MSG + SkillCRTD + CK_STR_MSG + CK_STR + html.BR() + html.BR() + Submit_BTNs
+	TEXT_Feild <= W_cd_MSG + W_cd + Wcd_P_MSG + Wcd_P + SubW_cd_MSG + SubW_cd + SubW_cdP_MSG + SubW_cdP + B_cd_MSG + B_cd + B_cdP_MSG + B_cdP + Addis_cd_MSG + Addis_cd + Addis_cdP_MSG + Addis_cdP + SPcd_MSG + SPcd + SPcdP_MSG + SPcdP + Enh_MSG + Enh + EnhP_MSG + EnhP + ALCrs_MSG + ALCrs + ALCrsP_MSG + ALCrsP + SkillCRTD_MSG + SkillCRTD + CK_STR_MSG + CK_STR + html.BR() + html.BR() + Submit_BTNs
 	W_cd.focus()
 	Wcd_P.focus()
 	SubW_cd.focus()
@@ -113,19 +117,21 @@ def back_cd():
 	Addis_cdP.focus()
 	SPcd.focus()
 	SPcdP.focus()
+	Enh.focus()
+	EnhP.focus()
 	ALCrs.focus()
 	ALCrsP.focus()
 	SkillCRTD.focus()
 	CK_STR.focus()
 
-	return W_cd, Wcd_P, SubW_cd, SubW_cdP, B_cd, B_cdP, Addis_cd, Addis_cdP, SPcd, SPcdP, ALCrs, ALCrsP, SkillCRTD, CK_STR, Submit_BTNs
+	return W_cd, Wcd_P, SubW_cd, SubW_cdP, B_cd, B_cdP, Addis_cd, Addis_cdP, SPcd, SPcdP, Enh, EnhP, ALCrs, ALCrsP, SkillCRTD, CK_STR, Submit_BTNs
 	
 
 def sclear():
 	document["RESULT"].clear()
 
 def main():
-	WeaponCD, WeaponCD_Percent, SubWeaponCD, SubWeaponCD_Percent, BodyEQuipmentCD, BodyEQuipmentCD_Percent, AdditionalEquipmentCD, AdditionalEquipmentCD_Percent, SPecialEquipmentCD, SPecialEquipmentCD_Percent, AllCristalCD, AllCristalCD_Percent, SkillCD, Cook_STR, Smit_BTN = back_cd()
+	WeaponCD, WeaponCD_Percent, SubWeaponCD, SubWeaponCD_Percent, BodyEQuipmentCD, BodyEQuipmentCD_Percent, AdditionalEquipmentCD, AdditionalEquipmentCD_Percent, SPecialEquipmentCD, SPecialEquipmentCD_Percent, EnchCD, EnchCDP, AllCristalCD, AllCristalCD_Percent, SkillCD, Cook_STR, Smit_BTN = back_cd()
 	@bind(Smit_BTN,"click")
 	def click(cl):
 		sclear()
@@ -176,14 +182,18 @@ def main():
 			SPecialEquipmentCD.value = '0'
 		if SPecialEquipmentCD_Percent.value == '':
 			SPecialEquipmentCD_Percent.value = '0'
+		if EnchCD.value == '':
+			EnchCD.value = '0'
+		if EnchCDP.value == '':
+			EnchCDP.value = '0'
 		if AllCristalCD.value == '':
 			AllCristalCD.value = '0'
 		if AllCristalCD_Percent.value == '':
 			AllCristalCD_Percent.value = '0'
 		if Cook_STR.value == '':
 			Cook_STR.value = '0'
-		ALLCD = int(WeaponCD.value) + int(SubWeaponCD.value) + int(BodyEQuipmentCD.value) + int(AdditionalEquipmentCD.value) + int(SPecialEquipmentCD.value) + int(AllCristalCD.value)
-		ALLCDPercent = int(WeaponCD_Percent.value) + int(SubWeaponCD_Percent.value) + int(BodyEQuipmentCD_Percent.value) + int(AdditionalEquipmentCD_Percent.value) + int(SPecialEquipmentCD_Percent.value) + int(AllCristalCD_Percent.value) + int(SkillCrtDamage)
+		ALLCD = int(WeaponCD.value) + int(SubWeaponCD.value) + int(BodyEQuipmentCD.value) + int(AdditionalEquipmentCD.value) + int(SPecialEquipmentCD.value) + int(EnchCD.value) + int(AllCristalCD.value)
+		ALLCDPercent = int(WeaponCD_Percent.value) + int(SubWeaponCD_Percent.value) + int(BodyEQuipmentCD_Percent.value) + int(AdditionalEquipmentCD_Percent.value) + int(SPecialEquipmentCD_Percent.value) + int(EnchCDP.value) + int(AllCristalCD_Percent.value) + int(SkillCrtDamage)
 		BasicCD = (300 - ALLCD) / float("1.{}".format(ALLCDPercent))
 		iALLSTR = round((BasicCD - 150) * 5)
 		sSTR = iALLSTR - int(Cook_STR.value)

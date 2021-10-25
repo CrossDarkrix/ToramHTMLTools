@@ -211,7 +211,8 @@ def main():
 		iALLSTR = (BasicCD - 150) * 5
 		if FixedSTR_Percent.value == '0':
 			sSTR = round((iALLSTR - int(Cook_STR.value) - int(FixedSTR.value)))
-		sSTR = round((iALLSTR - int(Cook_STR.value) - int(FixedSTR.value)) / int(FixedSTR_Percent.value))
+		else:
+			sSTR = round((iALLSTR - int(Cook_STR.value) - int(FixedSTR.value)) / int(FixedSTR_Percent.value))
 		
 		document["RESULT"] <= "今のパラメータに必要なSTRの値: {}".format(sSTR)
 main()

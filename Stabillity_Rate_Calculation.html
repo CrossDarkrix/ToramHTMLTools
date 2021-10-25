@@ -15,7 +15,7 @@ body{
 input{
 	font: sans-serif;
 	font-size: 25px;
-	width: 280px;
+	width: 80px;
 	height: 50px;
 	padding: 0.3em;
 	transition: 0.3s;
@@ -28,6 +28,10 @@ input{
 	outline-width: 4.1px;
 	}
 div{
+	font-size: 25px;
+	}
+i{
+	display:inline;
 	font-size: 25px;
 	}
 button{
@@ -89,14 +93,14 @@ def tclear():
 	document["text_field"].clear()
 
 def ONEHANDsw():
-	s1ALL_Equipment_MSG = html.DIV("装備の安定率の合計値:")
+	s1ALL_Equipment_MSG = html.I("装備の安定率の合計値:")
 	s1ALL_Equipment = html.INPUT()
-	s1DEX_MSG = html.DIV("ステータスのDEX値:")
+	s1DEX_MSG = html.I("ステータスのDEX値:")
 	s1DEX = html.INPUT()
-	s1STR_MSG = html.DIV("ステータスのSTR値:")
+	s1STR_MSG = html.I("ステータスのSTR値:")
 	s1STR = html.INPUT()
 	s1Submit_BTN = html.BUTTON("計算する")
-	TEXT_Feild <= s1ALL_Equipment_MSG + s1ALL_Equipment + s1DEX_MSG + s1DEX + s1STR_MSG + s1STR + html.BR() + html.BR() + s1Submit_BTN
+	TEXT_Feild <= s1ALL_Equipment_MSG + ' ' + s1ALL_Equipment + html.BR() + s1DEX_MSG + ' ' + s1DEX + html.BR() + s1STR_MSG + ' ' + s1STR + html.BR() + html.BR() + s1Submit_BTN
 	s1ALL_Equipment.focus()
 	s1DEX.focus()
 	s1STR.focus()
@@ -114,12 +118,12 @@ def One_handed_sword(): # 片手剣
 		document["RESULT"] <= 'あなたの安定率は: {One_H_STabillity}％です。'.format(One_H_STabillity=Result)
 
 def TOWHANDsw():
-	s1ALL_Equipment_MSG = html.DIV("装備の安定率の合計値:")
+	s1ALL_Equipment_MSG = html.I("装備の安定率の合計値:")
 	s1ALL_Equipment = html.INPUT()
-	s1DEX_MSG = html.DIV("ステータスのDEX値:")
+	s1DEX_MSG = html.I("ステータスのDEX値:")
 	s1DEX = html.INPUT()
 	s1Submit_BTN = html.BUTTON("計算する")
-	TEXT_Feild <= s1ALL_Equipment_MSG + s1ALL_Equipment + s1DEX_MSG + s1DEX + html.BR() + html.BR() + s1Submit_BTN
+	TEXT_Feild <= s1ALL_Equipment_MSG + ' ' + s1ALL_Equipment + html.BR() + s1DEX_MSG + ' ' + s1DEX + html.BR() + html.BR() + s1Submit_BTN
 	s1ALL_Equipment.focus()
 	s1DEX.focus()
 	return s1ALL_Equipment, s1DEX, s1Submit_BTN
@@ -135,14 +139,14 @@ def Tow_handed_sword(): # 両手剣
 		document["RESULT"] <= 'あなたの安定率は: {Tow_H_STabillity}％です。'.format(Tow_H_STabillity=Result)
 
 def DUALsw():
-	s1ALL_Equipment_MSG = html.DIV("装備の安定率の合計値:")
+	s1ALL_Equipment_MSG = html.I("装備の安定率の合計値:")
 	s1ALL_Equipment = html.INPUT()
-	s1DEX_MSG = html.DIV("ステータスのDEX値:")
+	s1DEX_MSG = html.I("ステータスのDEX値:")
 	s1DEX = html.INPUT()
-	s1STR_MSG = html.DIV("ステータスのSTR値:")
+	s1STR_MSG = html.I("ステータスのSTR値:")
 	s1STR = html.INPUT()
 	s1Submit_BTN = html.BUTTON("計算する")
-	TEXT_Feild <= s1ALL_Equipment_MSG + s1ALL_Equipment + s1DEX_MSG + s1DEX + s1STR_MSG + s1STR + html.BR() + html.BR() + s1Submit_BTN
+	TEXT_Feild <= s1ALL_Equipment_MSG + ' ' + s1ALL_Equipment + html.BR() + s1DEX_MSG + ' ' + s1DEX + html.BR() + s1STR_MSG + ' ' + s1STR + html.BR() + html.BR() + s1Submit_BTN
 	s1ALL_Equipment.focus()
 	s1DEX.focus()
 	s1STR.focus()
@@ -160,12 +164,12 @@ def Dual_sword(): # 双剣
 		document["RESULT"] <= 'あなたの安定率は: {Dual_H_STabillity}％です。'.format(Dual_H_STabillity=Result)
 
 def KNUCKLEs():
-	s1ALL_Equipment_MSG = html.DIV("装備の安定率の合計値:")
+	s1ALL_Equipment_MSG = html.I("装備の安定率の合計値:")
 	s1ALL_Equipment = html.INPUT()
-	s1DEX_MSG = html.DIV("ステータスのDEX値:")
+	s1DEX_MSG = html.I("ステータスのDEX値:")
 	s1DEX = html.INPUT()
 	s1Submit_BTN = html.BUTTON("計算する")
-	TEXT_Feild <= s1ALL_Equipment_MSG + s1ALL_Equipment + s1DEX_MSG + s1DEX + html.BR() + html.BR() + s1Submit_BTN
+	TEXT_Feild <= s1ALL_Equipment_MSG + ' ' + s1ALL_Equipment + html.BR() + s1DEX_MSG + ' ' + s1DEX + html.BR() + html.BR() + s1Submit_BTN
 	s1ALL_Equipment.focus()
 	s1DEX.focus()
 	return s1ALL_Equipment, s1DEX, s1Submit_BTN
@@ -181,21 +185,21 @@ def Knuckle(): # 拳
 		document["RESULT"] <= 'あなたの安定率は: {Knuckle_STabillity}％です。'.format(Knuckle_STabillity=Result)
 
 def HALBERDs():
-	s1ALL_Equipment_MSG = html.DIV("装備の安定率の合計値:")
+	s1ALL_Equipment_MSG = html.I("装備の安定率の合計値:")
 	s1ALL_Equipment = html.INPUT()
-	s1DEX_MSG = html.DIV("ステータスのDEX値:")
+	s1DEX_MSG = html.I("ステータスのDEX値:")
 	s1DEX = html.INPUT()
-	s1STR_MSG = html.DIV("ステータスのSTR値:")
+	s1STR_MSG = html.I("ステータスのSTR値:")
 	s1STR = html.INPUT()
 	s1Submit_BTN = html.BUTTON("計算する")
-	TEXT_Feild <= s1ALL_Equipment_MSG + s1ALL_Equipment + s1DEX_MSG + s1DEX + s1STR_MSG + s1STR + html.BR() + html.BR() + s1Submit_BTN
+	TEXT_Feild <= s1ALL_Equipment_MSG + ' ' + s1ALL_Equipment + html.BR() + s1DEX_MSG + ' ' + s1DEX + html.BR() + s1STR_MSG + ' ' + s1STR + html.BR() + html.BR() + s1Submit_BTN
 	s1ALL_Equipment.focus()
 	s1DEX.focus()
 	s1STR.focus()
 	return s1ALL_Equipment, s1DEX, s1STR, s1Submit_BTN
 
 def Halberd(): # 旋風槍
-	ALL_EQ, D, STR, BTN = HALBERDs()
+	ALL_EQ, D, S, BTN = HALBERDs()
 	@bind(BTN, "click")
 	def HClick(cl):
 		sclear()
@@ -206,14 +210,14 @@ def Halberd(): # 旋風槍
 		document["RESULT"] <= 'あなたの安定率は: {Halberd_STabillity}％です。'.format(Halberd_STabillity=Result)
 
 def KATANAs():
-	s1ALL_Equipment_MSG = html.DIV("装備の安定率の合計値:")
+	s1ALL_Equipment_MSG = html.I("装備の安定率の合計値:")
 	s1ALL_Equipment = html.INPUT()
-	s1DEX_MSG = html.DIV("ステータスのDEX値:")
+	s1DEX_MSG = html.I("ステータスのDEX値:")
 	s1DEX = html.INPUT()
-	s1STR_MSG = html.DIV("ステータスのSTR値:")
+	s1STR_MSG = html.I("ステータスのSTR値:")
 	s1STR = html.INPUT()
 	s1Submit_BTN = html.BUTTON("計算する")
-	TEXT_Feild <= s1ALL_Equipment_MSG + s1ALL_Equipment + s1DEX_MSG + s1DEX + s1STR_MSG + s1STR + html.BR() + html.BR() + s1Submit_BTN
+	TEXT_Feild <= s1ALL_Equipment_MSG + ' ' + s1ALL_Equipment + html.BR() + s1DEX_MSG + ' ' + s1DEX + html.BR() + s1STR_MSG + ' ' + s1STR + html.BR() + html.BR() + s1Submit_BTN
 	s1ALL_Equipment.focus()
 	s1DEX.focus()
 	s1STR.focus()
@@ -231,12 +235,12 @@ def Katana(): # 刀
 		document["RESULT"] <= 'あなたの安定率は: {Katana_STabillity}％です。'.format(Katana_STabillity=Result)
 
 def STAFFs():
-	s1ALL_Equipment_MSG = html.DIV("装備の安定率の合計値:")
+	s1ALL_Equipment_MSG = html.I("装備の安定率の合計値:")
 	s1ALL_Equipment = html.INPUT()
-	s1STR_MSG = html.DIV("ステータスのSTR値:")
+	s1STR_MSG = html.I("ステータスのSTR値:")
 	s1STR = html.INPUT()
 	s1Submit_BTN = html.BUTTON("計算する")
-	TEXT_Feild <= s1ALL_Equipment_MSG + s1ALL_Equipment + s1STR_MSG + s1STR + html.BR() + html.BR() + s1Submit_BTN
+	TEXT_Feild <= s1ALL_Equipment_MSG + ' ' + s1ALL_Equipment + html.BR() + s1STR_MSG + ' ' + s1STR + html.BR() + html.BR() + s1Submit_BTN
 	s1ALL_Equipment.focus()
 	s1STR.focus()
 	return s1ALL_Equipment, s1STR, s1Submit_BTN
@@ -252,12 +256,12 @@ def Staff(): # 杖
 		document["RESULT"] <= 'あなたの安定率は: {Staff_STabillity}％です。'.format(Staff_STabillity=Result)
 
 def MAGICDEVICEs():
-	s1ALL_Equipment_MSG = html.DIV("装備の安定率の合計値:")
+	s1ALL_Equipment_MSG = html.I("装備の安定率の合計値:")
 	s1ALL_Equipment = html.INPUT()
-	s1DEX_MSG = html.DIV("ステータスのDEX値:")
+	s1DEX_MSG = html.I("ステータスのDEX値:")
 	s1DEX = html.INPUT()
 	s1Submit_BTN = html.BUTTON("計算する")
-	TEXT_Feild <= s1ALL_Equipment_MSG + s1ALL_Equipment + s1DEX_MSG + s1DEX + html.BR() + html.BR() + s1Submit_BTN
+	TEXT_Feild <= s1ALL_Equipment_MSG + ' ' + s1ALL_Equipment + html.BR() + s1DEX_MSG + ' ' + s1DEX + html.BR() + html.BR() + s1Submit_BTN
 	s1ALL_Equipment.focus()
 	s1DEX.focus()
 	return s1ALL_Equipment, s1DEX, s1Submit_BTN
@@ -273,16 +277,16 @@ def Magic_Devices(): # 魔導具
 		document["RESULT"] <= 'あなたの安定率は: {MD_STabillity}％です。'.format(MD_STabillity=Result)
 
 def BOWs():
-	s1ALL_Equipment_MSG = html.DIV("装備の安定率の合計値:")
+	s1ALL_Equipment_MSG = html.I("装備の安定率の合計値:")
 	s1ALL_Equipment = html.INPUT()
-	s1DEX_MSG = html.DIV("ステータスのDEX値:")
+	s1DEX_MSG = html.I("ステータスのDEX値:")
 	s1DEX = html.INPUT()
-	s1STR_MSG = html.DIV("ステータスのSTR値:")
+	s1STR_MSG = html.I("ステータスのSTR値:")
 	s1STR = html.INPUT()
-	s1Arrow_MSG = html.DIV("矢の安定率:")
+	s1Arrow_MSG = html.I("矢の安定率:")
 	s1Arrow = html.INPUT()
 	s1Submit_BTN = html.BUTTON("計算する")
-	TEXT_Feild <= s1ALL_Equipment_MSG + s1ALL_Equipment + s1DEX_MSG + s1DEX + s1STR_MSG + s1STR + s1Arrow_MSG + s1Arrow + html.BR() + html.BR() + s1Submit_BTN
+	TEXT_Feild <= s1ALL_Equipment_MSG + ' ' + s1ALL_Equipment + html.BR() + s1DEX_MSG + ' ' + s1DEX + html.BR() + s1STR_MSG + ' ' + s1STR + html.BR() + s1Arrow_MSG + ' ' + s1Arrow + html.BR() + html.BR() + s1Submit_BTN
 	s1ALL_Equipment.focus()
 	s1DEX.focus()
 	s1STR.focus()
@@ -302,14 +306,14 @@ def Bow(): # 弓
 		document["RESULT"] <= 'あなたの安定率は: {Bow_STabillity}％です。'.format(Bow_STabillity=Result)
 
 def BOWGUNs():
-	s1ALL_Equipment_MSG = html.DIV("装備の安定率の合計値:")
+	s1ALL_Equipment_MSG = html.I("装備の安定率の合計値:")
 	s1ALL_Equipment = html.INPUT()
-	s1STR_MSG = html.DIV("ステータスのSTR値:")
+	s1STR_MSG = html.I("ステータスのSTR値:")
 	s1STR = html.INPUT()
-	s1Arrow_MSG = html.DIV("矢の安定率:")
+	s1Arrow_MSG = html.I("矢の安定率:")
 	s1Arrow = html.INPUT()
 	s1Submit_BTN = html.BUTTON("計算する")
-	TEXT_Feild <= s1ALL_Equipment_MSG + s1ALL_Equipment + s1STR_MSG + s1STR + s1Arrow_MSG + s1Arrow + html.BR() + html.BR() + s1Submit_BTN
+	TEXT_Feild <= s1ALL_Equipment_MSG + ' ' + s1ALL_Equipment + html.BR() + s1STR_MSG + ' ' + s1STR + html.BR() + s1Arrow_MSG + ' ' + s1Arrow + html.BR() + html.BR() + s1Submit_BTN
 	s1ALL_Equipment.focus()
 	s1STR.focus()
 	s1Arrow.focus()
@@ -327,10 +331,10 @@ def BowGun(): # 自動弓
 		document["RESULT"] <= 'あなたの安定率は: {Bowgun_STabillity}％です。'.format(Bowgun_STabillity=Result)
 
 def main_d():
-	s1Selector_MSG = html.DIV("計算したい職の番号:")
+	s1Selector_MSG = html.I("計算したい職の番号:")
 	s1Selector = html.INPUT()
 	SubmitBTNs = html.BUTTON("選択")
-	Selctor_SW <= s1Selector_MSG + s1Selector + html.BR() + html.BR() + SubmitBTNs
+	Selctor_SW <= s1Selector_MSG + ' ' + s1Selector + html.BR() + html.BR() + SubmitBTNs
 	s1Selector.focus()
 	return s1Selector, SubmitBTNs
 

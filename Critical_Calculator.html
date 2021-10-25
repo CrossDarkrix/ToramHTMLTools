@@ -16,7 +16,7 @@ body{
 input{
 	font: sans-serif;
 	font-size: 25px;
-	width: 280px;
+	width: 80px;
 	height: 50px;
 	padding: 0.3em;
 	transition: 0.3s;
@@ -29,6 +29,10 @@ input{
 	outline-width: 4.1px;
 	}
 div{
+	font-size: 23px;
+	}
+i{
+	display:inline;
 	font-size: 23px;
 	}
 button{
@@ -82,17 +86,17 @@ def Selector():
 	return rSubmit_1, rSubmit_2
 
 def Crtical():
-	rStatusCRT_MSG = html.DIV("ステータス(CRT) :")
+	rStatusCRT_MSG = html.I("ステータス(CRT) :")
 	rStatusCRT = html.INPUT()
-	rSkillCRT_MSG = html.DIV("クリティカルアップ Lv :")
+	rSkillCRT_MSG = html.I("クリティカルアップ Lv :")
 	rSkillCRT = html.INPUT()
-	rEQCRT_MSG =  html.DIV("クリティカル率＋ :")
+	rEQCRT_MSG =  html.I("クリティカル率＋ :")
 	rEQCRT = html.INPUT()
-	rEQsCRT_MSG = html.DIV("クリティカル率(％)＋ :")
+	rEQsCRT_MSG = html.I("クリティカル率(％)＋ :")
 	rEQsCRT = html.INPUT()
 	Submit_BTNs = html.BUTTON("計算する")
 	
-	TEXT_Field <= rStatusCRT_MSG + rStatusCRT + rSkillCRT_MSG + rSkillCRT + rEQCRT_MSG + rEQCRT + rEQsCRT_MSG + rEQsCRT + html.BR() + html.BR() + Submit_BTNs
+	TEXT_Field <= rStatusCRT_MSG + ' ' + rStatusCRT + html.BR() + rSkillCRT_MSG + ' ' + rSkillCRT + html.BR() + rEQCRT_MSG + ' ' + rEQCRT + html.BR() + rEQsCRT_MSG + ' ' + rEQsCRT + html.BR() + html.BR() + Submit_BTNs
 	rStatusCRT.focus()
 	rSkillCRT.focus()
 	rEQCRT.focus()
@@ -231,7 +235,7 @@ main()
 			「クリティカル率＋」には武器や鎧やクリスタ、エンチャントやスキルの合計クリティカル値を入れてください<br>
 			「クリティカル率(％)＋」には武器や鎧やクリスタ、エンチャントやスキルの合計クリティカル値(％)を入れてください<br><br>
 	</div>
-	<div id="Slector_Field"></div><br>
+	<div id="Slector_Field"></div>
 	<div id="text_field"></div><br>
 	<div id="RESULTs"><h2 id="RESULT" style="color: red;"></h2></div>
 		<h4><br><br><br>

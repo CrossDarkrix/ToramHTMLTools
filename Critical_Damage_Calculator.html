@@ -15,7 +15,7 @@ body{
 input{
 	font: sans-serif;
 	font-size: 25px;
-	width: 280px;
+	width: 80px;
 	height: 50px;
 	padding: 0.3em;
 	transition: 0.3s;
@@ -30,6 +30,11 @@ input{
 div{
 	font-size: 25px;
 	}
+i{
+	display:inline;
+	font-size: 25px;
+	}
+
 button{
 	background-color: #4f4f4f;
 	color: #e4cfcf;
@@ -72,19 +77,19 @@ from math import floor as flr
 document["TITLE"] <= "クリティカルダメージ計算ツール"
 TEXT_Feild = document["text_field"]
 def STRss():
-	STR_MSG = html.DIV("STR値(ステータス):")
+	STR_MSG = html.I("STR値(ステータス):")
 	STRs = html.INPUT()
-	STR_Percent_MSG = html.DIV("STR値(％)の合計値:")
+	STR_Percent_MSG = html.I("STR値(％)の合計値:")
 	STRs_Percent = html.INPUT()
-	CRTDMG_MSG = html.DIV("合計クリティカルダメージ:")
+	CRTDMG_MSG = html.I("合計クリティカルダメージ:")
 	CriticalDamages = html.INPUT()
-	CRTDMG_Percent_MSG = html.DIV("合計クリティカルダメージ(％):")
+	CRTDMG_Percent_MSG = html.I("合計クリティカルダメージ(％):")
 	CrtDamage_Percents = html.INPUT()
-	SkillCRTD_MSG = html.DIV("クリティカルアップのレベル:")
+	SkillCRTD_MSG = html.I("クリティカルアップのレベル:")
 	SkillCRTD = html.INPUT()
 	Submit_BTNs = html.BUTTON("計算する")
 
-	TEXT_Feild <= STR_MSG + STRs + STR_Percent_MSG + STRs_Percent + CRTDMG_MSG + CriticalDamages + CRTDMG_Percent_MSG + CrtDamage_Percents + SkillCRTD_MSG + SkillCRTD + html.BR() + html.BR() + Submit_BTNs
+	TEXT_Feild <= STR_MSG + ' ' + STRs + html.BR() + STR_Percent_MSG + ' ' + STRs_Percent + html.BR() + CRTDMG_MSG + ' ' + CriticalDamages + html.BR() + CRTDMG_Percent_MSG + ' ' + CrtDamage_Percents + html.BR() + SkillCRTD_MSG + ' ' + SkillCRTD + html.BR() + html.BR() + Submit_BTNs
 	STRs.focus()
 	STRs_Percent.focus()
 	CriticalDamages.focus()

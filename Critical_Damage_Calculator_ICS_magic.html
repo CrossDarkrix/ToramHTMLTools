@@ -207,7 +207,7 @@ def main():
 		
 		ALLCD = int(WeaponCD.value) + int(SubWeaponCD.value) + int(BodyEQuipmentCD.value) + int(AdditionalEquipmentCD.value) + int(SPecialEquipmentCD.value) + int(EnchCD.value) + int(AllCristalCD.value)
 		ALLCDPercent = int(WeaponCD_Percent.value) + int(SubWeaponCD_Percent.value) + int(BodyEQuipmentCD_Percent.value) + int(AdditionalEquipmentCD_Percent.value) + int(SPecialEquipmentCD_Percent.value) + int(EnchCDP.value) + int(AllCristalCD_Percent.value) + int(SkillCrtDamage)
-		BasicCD = (300 - ALLCD) / float("1.{}".format(ALLCDPercent))
+		BasicCD = (300 - ALLCD) / (1 + (ALLCDPercent / 100))
 		iALLSTR = (BasicCD - 150) * 5
 		if int(FixedSTR_Percent.value) <= 9:
 			FixedSTR_Percent.value = '0' + FixedSTR_Percent.value

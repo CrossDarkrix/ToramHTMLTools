@@ -89,7 +89,7 @@ def STRss():
 	SkillCRTD = html.INPUT()
 	Submit_BTNs = html.BUTTON("計算する")
 
-	TEXT_Feild <= STR_MSG + ' ' + STRs + html.BR() + STR_Percent_MSG + ' ' + STRs_Percent + html.BR() + CRTDMG_MSG + ' ' + CriticalDamages + html.BR() + CRTDMG_Percent_MSG + ' ' + CrtDamage_Percents + html.BR() + SkillCRTD_MSG + ' ' + SkillCRTD + html.BR() + html.BR() + Submit_BTNs
+	TEXT_Feild <= STR_MSG + html.I(" ") + STRs + html.BR() + STR_Percent_MSG + html.I(" ") + STRs_Percent + html.BR() + CRTDMG_MSG + html.I(" ") + CriticalDamages + html.BR() + CRTDMG_Percent_MSG + html.I(" ") + CrtDamage_Percents + html.BR() + SkillCRTD_MSG + html.I(" ") + SkillCRTD + html.BR() + html.BR() + Submit_BTNs
 	STRs.focus()
 	STRs_Percent.focus()
 	CriticalDamages.focus()

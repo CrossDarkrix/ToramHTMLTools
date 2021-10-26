@@ -94,7 +94,7 @@ def Abnomarls():
 	men_ADD8_MSG = html.I("MEN装備(％) part 8:")
 	men_ADD8 = html.INPUT()
 	men_BTN = html.BUTTON("計算する")
-	TEXT_Feild <= StatusMEN_MSG + ' ' + StatusMEN + html.BR() + men_ADD1_MSG + ' ' + men_ADD1 + html.BR() + men_ADD2_MSG + ' ' + men_ADD2 + html.BR() + men_ADD3_MSG + ' ' + men_ADD3 + html.BR() + men_ADD4_MSG + ' ' + men_ADD4 + html.BR() + men_ADD5_MSG + ' ' + men_ADD5 + html.BR() + men_ADD6_MSG + ' ' + men_ADD6 + html.BR() + men_ADD7_MSG + ' ' + men_ADD7 + html.BR() + men_ADD8_MSG + ' ' + men_ADD8 + html.BR() + html.BR() + men_BTN
+	TEXT_Feild <= StatusMEN_MSG + html.I(" ") + StatusMEN + html.BR() + men_ADD1_MSG + html.I(" ") + men_ADD1 + html.BR() + men_ADD2_MSG + html.I(" ") + men_ADD2 + html.BR() + men_ADD3_MSG + html.I(" ") + men_ADD3 + html.BR() + men_ADD4_MSG + html.I(" ") + men_ADD4 + html.BR() + men_ADD5_MSG + html.I(" ") + men_ADD5 + html.BR() + men_ADD6_MSG + html.I(" ") + men_ADD6 + html.BR() + men_ADD7_MSG + html.I(" ") + men_ADD7 + html.BR() + men_ADD8_MSG + html.I(" ") + men_ADD8 + html.BR() + html.BR() + men_BTN
 
 	StatusMEN.focus()
 	men_ADD1.focus()
@@ -171,7 +171,7 @@ def main():
 		except:
 			document["RESULT"] <= "不明なエラーです。"
 		fmen = str(int(MENADD_1 + MENADD_2 + MENADD_3 + MENADD_4 + MENADD_5 + MENADD_6 + MENADD_7 + MENADD_8 + (stutus / 3.4)))
-		document["RESULT"] <= "あなたの異常耐性率は" + fmen + "％です。"
+		document["RESULT"] <= "あなたの異常耐性率は{}％です。".format(fmen)
 main()
 </script>
 	<h4 style="display: inline;"><a href="https://crossdarkrix.github.io/ToramHTMLTools/" style="display: inline;">トップページに戻る</a></h4>

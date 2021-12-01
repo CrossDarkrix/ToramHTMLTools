@@ -1,0 +1,28 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>アクセスカウンター</title>
+<script type="text/javascript" src="brython/www/src/brython.js">
+</script>
+<script type="text/javascript" src="brython/www/src/brython_stdlib.js">
+</script>
+<body onload="brython()">
+<script type="text/python">
+from browser import document, html, bind, ajax
+T = document['pp1']
+reQ = ajax.Ajax()
+
+def submain(R):
+	Data = str(int(R.text) + 1)
+	reQ.open('PUT', 'Ac.txt')
+	reQ.send(Data)
+	AccessCount = html.DIV(Data)
+	T <= AccessCount
+
+def main():
+	ajax.get('Ac.txt', oncomplete=submain)
+
+main()
+</script>
+
+<p id="pp1"></p>

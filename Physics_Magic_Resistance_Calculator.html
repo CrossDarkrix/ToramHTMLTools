@@ -1,0 +1,134 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>トーラムオンライン【簡易版】(物理/魔法) 耐性計算ツール</title>
+<script type="text/javascript" src="brython/www/src/brython.js">
+</script>
+<script type="text/javascript" src="brython/www/src/brython_stdlib.js">
+</script>
+<style type="text/css">
+body{
+	background-color: #2b2b2b;
+	color: #e4cfcf;
+	font-size: 23px;
+}
+input{
+	font: sans-serif;
+	font-size: 25px;
+	width: 80px;
+	height: 50px;
+	padding: 0.3em;
+	transition: 0.3s;
+	color: #d3d3d3;
+	border: none;
+	border-bottom: 2px solid #1b2538;
+	background-color: #463939;
+	outline-color: #343434;
+	outline-style: groove;
+	outline-width: 4.1px;
+	}
+div{
+	font-size: 25px;
+	}
+i{
+	display:inline;
+	font-size: 25px;
+	}
+
+button{
+	background-color: #4f4f4f;
+	color: #e4cfcf;
+	font-size: 35px;
+	width: 280px;
+	height: 60px;
+	outline: 0;
+	}
+div#RESULTs{
+	border: 2px groove;
+	color: #4f4f4f;
+	width: 930px;
+	height: 60px;
+
+}
+h2#RESULT{
+	font-size: 30px;
+	display:inline; 
+	width: 750px;
+	height: 80px;
+	color: red;
+}
+a:link { color: #e4d7a6; }
+a:visited { color: #e4d7a6; }
+a:hover { color: #e4d7a6; }
+a:active { color: #e4d7a6; }
+a{
+	font-family: sans-serif;
+	font-size: 23px;
+	}
+div#text_field{
+	font-size: 35px;
+	}
+</style>
+</head>
+<body onload="brython()">
+<script type="text/python">
+from browser import document, html, bind
+from math import floor
+document["TITLE"] <= "【簡易版】(物理/魔法)耐性計算ツール"
+CalculationField = document["Calculation_Field"]
+
+def Resistance_input():
+	physics_Title = html.I('物理耐性の合計値:')
+	physics_Input = html.INPUT()
+	magics_Title = html.I('魔法耐性の合計値:')
+	magics_Input = html.INPUT()
+	Calculation_BTN = html.BUTTON("計算する")
+	CalculationField <= physics_Title + html.I(" ") + physics_Input + html.BR() + magics_Title + html.I(" ") + magics_Input + html.BR() + html.BR() + Calculation_BTN
+	physics_Input.focus()
+	magics_Input.focus()
+
+	return physics_Input, magics_Input, Calculation_BTN
+
+def ScreenClear():
+	document["RESULT"].clear()
+
+def main():
+	PI, MI, Calc_BTN = Resistance_input()
+	@bind(Calc_BTN,"click")
+	def CalculationClick(CC):
+		ScreenClear()
+		if PI.value == '':
+			PI.value = '0'
+		if MI.value == '':
+			MI.value = '0'
+		physical_resistance = int(PI.value)
+		if 51 <= physical_resistance:
+			Physcal_ADD_Resistance = floor((50 / 100) * ((physical_resistance - 50) / 100) * 100) + 50
+		else:
+			Physcal_ADD_Resistance = physical_resistance + 0
+
+		magic_resistance = int(MI.value)
+		if 51 <= magic_resistance:
+			Magic_ADD_Resistance = floor((50 / 100) * ((magic_resistance - 50) / 100) * 100) + 50
+		else:
+			Magic_ADD_Resistance = magic_resistance + 0
+
+		document["RESULT"] <= 'あなたの実際の物理耐性は{}％で、実際の魔法耐性は{}％です。'.format(Physcal_ADD_Resistance, Magic_ADD_Resistance)
+
+main()
+</script>
+	<h4 style="display: inline;"><a href="https://crossdarkrix.github.io/ToramHTMLTools/" style="display: inline;">トップページに戻る</a></h4>
+	<h2 id="TITLE"></h2>
+	<div>
+		注意事項:<br>
+			「物理耐性」と「魔法耐性」には50%からは盛った分の値が半減する仕様なので作りました。<br><br>
+			「物理耐性の合計値」には装備等で盛った物理耐性の値(％)を入れてください<br>
+			「魔法耐性の合計値」には装備等で盛った魔法耐性の値(％)を入れてください<br><br>
+	</div>
+	<div id="Calculation_Field"></div><br>
+	<div id="RESULTs"><h2 id="RESULT"></h2></div>
+	<h3><br><br><br>
+	</h3>
+        </body>
+
+    </html>

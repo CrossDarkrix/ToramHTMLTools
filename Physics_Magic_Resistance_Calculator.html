@@ -68,6 +68,19 @@ a{
 div#text_field{
 	font-size: 35px;
 	}
+textarea{
+	resize: none;
+	width: 970px;
+	height: 90px;
+	color: #e4cfcf;
+	background-color: #2b2b2b;
+	outline-style: groove;
+	outline: 0;
+	outline-width: 2.1px;
+}
+h3#H3relase_Data{
+	display:inline;
+}
 </style>
 </head>
 <body onload="brython()">
@@ -76,7 +89,12 @@ from browser import document, html, bind
 from math import floor
 document["TITLE"] <= "物理／魔法 耐性計算ツール"
 CalculationField = document["Calculation_Field"]
-
+document["ReleaseData"] <= """2022/01/14 - ページ作成と微調整、計算式作成。
+2022/01/14 - 入力がない時は0を自動的に入力するように調整。
+2022/01/15 - 出力値が100％を超えないように調整。
+2022/01/15 - 出力値がマイナスにならないように調整。
+2022/01/15 - 変更履歴の追加。
+"""
 def Resistance_input():
 	physics_Title = html.I('物理耐性の合計値(％):')
 	physics_Input = html.INPUT()
@@ -99,6 +117,7 @@ def main():
 		ScreenClear()
 		if PI.value == '':
 			PI.value = '0'
+
 		if MI.value == '':
 			MI.value = '0'
 
@@ -112,6 +131,8 @@ def main():
 
 		if 101 <= Physcal_ADD_Resistance:
 			Physcal_ADD_Resistance = 'NaN'
+		if Physcal_ADD_Resistance <= -1:
+			Physcal_ADD_Resistance = 'NaN'
 
 		magic_resistance = int(MI.value) # magic
 		if 51 <= magic_resistance <= 99:
@@ -122,6 +143,8 @@ def main():
 			Magic_ADD_Resistance = magic_resistance + 0
 
 		if 101 <= Magic_ADD_Resistance:
+			Magic_ADD_Resistance = 'NaN'
+		if Magic_ADD_Resistance <= -1:
 			Magic_ADD_Resistance = 'NaN'
 
 		document["RESULT"] <= 'あなたの実際の物理耐性は{}％で、実際の魔法耐性は{}％です。'.format(Physcal_ADD_Resistance, Magic_ADD_Resistance)
@@ -138,7 +161,9 @@ main()
 			「魔法耐性の合計値」には装備等で盛った魔法耐性の値(％)を入れてください。<br><br>
 	</div>
 	<div id="Calculation_Field"></div><br>
-	<div id="RESULTs"><h2 id="RESULT"></h2></div>
+	<div id="RESULTs"><h2 id="RESULT"></h2></div><br>
+	<h3 id="H3relase_Data">変更履歴</h3><br>
+	<textarea readonly id="ReleaseData"></textarea>
 	<h3><br><br><br>
 	</h3>
         </body>

@@ -128,7 +128,7 @@ def main():
 		if MI.value == '':
 			MI.value = '0'
 
-		physical_resistance = int(PI.value) # physical
+		physical_resistance = int(PI.value)
 		if 51 <= physical_resistance <= 99:
 			Physcal_ADD_Resistance = floor(50 + ((physical_resistance - 50) / 2))
 		elif 100 <= physical_resistance:
@@ -138,10 +138,10 @@ def main():
 
 		if 101 <= Physcal_ADD_Resistance:
 			Physcal_ADD_Resistance = 'NaN'
-		if Physcal_ADD_Resistance <= -1:
+		elif Physcal_ADD_Resistance <= -1:
 			Physcal_ADD_Resistance = 'NaN'
 
-		magic_resistance = int(MI.value) # magic
+		magic_resistance = int(MI.value)
 		if 51 <= magic_resistance <= 99:
 			Magic_ADD_Resistance = floor((50 / 100) * (((magic_resistance - 50) / 5) / 100) * 100) + 50
 		elif 100 <= magic_resistance:
@@ -151,7 +151,7 @@ def main():
 
 		if 101 <= Magic_ADD_Resistance:
 			Magic_ADD_Resistance = 'NaN'
-		if Magic_ADD_Resistance <= -1:
+		elif Magic_ADD_Resistance <= -1:
 			Magic_ADD_Resistance = 'NaN'
 
 		document["RESULT"] <= '実際の物理耐性は{}％、実際の魔法耐性は{}％です。'.format(Physcal_ADD_Resistance, Magic_ADD_Resistance)

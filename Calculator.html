@@ -120,12 +120,20 @@ def main():
     @bind(Percent, "click")
     def Percents(Pc):
         document['RESULT'].clear()
-        try:
-            CalculatedList[0] = str(int(CalculatedList[0]) / 100)
-            document['RESULT'] <= ' '.join(CalculationList)
-        except ValueError:
-            CalculatedList[0] = '0'
-            document['RESULT'] <= ' '.join(CalculationList)
+        if not CalculationList[0] == '':
+            try:
+                CalculationList[0] = str(int(CalculationList[0]) / 100)
+                document['RESULT'] <= ' '.join(CalculationList[0])
+            except ValueError:
+                CalculatedList[0] = '0'
+                document['RESULT'] <= ' '.join(CalculationList)
+        elif not CalculationList[2] == '':
+            try:
+                CalculationList[2] = str(int(CalculationList[2]) / 100)
+                document['RESULT'] <= ' '.join(CalculationList[2])
+            except ValueError:
+                CalculatedList[2] = '0'
+                document['RESULT'] <= ' '.join(CalculationList)
     
     @bind(Division, "click")
     def Divisions(Div):

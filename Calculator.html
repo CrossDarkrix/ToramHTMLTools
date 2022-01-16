@@ -378,6 +378,8 @@ def main():
                 CalculatedList[0] = int(CalculationList[0]) / int(CalculationList[2])
             except ValueError:
                 CalculatedList[0] = round(float(CalculationList[0]) / float(CalculationList[2]), 5)
+            except ZeroDivisionError:
+                CalculatedList[0] = 0
         elif CalculationList[1] == '*':
             try:
                 CalculatedList[0] = int(CalculationList[0]) * int(CalculationList[2])

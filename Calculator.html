@@ -1,0 +1,418 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>簡易電卓</title>
+<script type="text/javascript" src="brython/www/src/brython.js">
+</script>
+<script type="text/javascript" src="brython/www/src/brython_stdlib.js">
+</script>
+<style type="text/css">
+body{
+	background-color: #2b2b2b;
+	color: #e4cfcf;
+	font-size: 23px;
+}
+
+div#Calculation_Field{
+	display:inline;
+	font-size: 25px;
+	}
+div#subCalculation_Field1{
+	display:inline;
+	font-size: 25px;
+	}
+div#subCalculation_Field2{
+	display:inline;
+	font-size: 25px;
+	}
+div#subCalculation_Field3{
+	display:inline;
+	font-size: 25px;
+	}
+button{
+	background-color: #4f4f4f;
+	color: #e4cfcf;
+	font-size: 35px;
+	width: 280px;
+	height: 60px;
+	outline: 0;
+	display:inline;
+	}
+div#RESULTs{
+	border: 2px groove;
+	color: #4f4f4f;
+	width: 950px;
+	height: 60px;
+
+}
+h2#RESULT{
+	font-size: 30px;
+	display:inline; 
+	width: 750px;
+	height: 80px;
+	color: red;
+	line-height: 2;
+	letter-spacing: 0.114em;
+	padding-left: 20px;
+}
+a:link { color: #e4d7a6; }
+a:visited { color: #e4d7a6; }
+a:hover { color: #e4d7a6; }
+a:active { color: #e4d7a6; }
+a{
+	font-family: sans-serif;
+	font-size: 23px;
+	}
+div#Calculation_Field{
+	font-size: 35px;
+	}
+
+</style>
+</head>
+<body onload="brython()">
+<script type="text/python">
+from browser import document, html, bind
+
+document["TITLE"] <= "簡易電卓"
+CalculationList = ['', '', '']
+CalculatedList = ['']
+
+def CalcButton():
+    dot = html.BUTTON('．')
+    zero = html.BUTTON('０')
+    one = html.BUTTON('１')
+    two = html.BUTTON('２')
+    tree = html.BUTTON('３')
+    four = html.BUTTON('４')
+    five = html.BUTTON('５')
+    six = html.BUTTON('６')
+    seven = html.BUTTON('７')
+    eight = html.BUTTON('８')
+    nine = html.BUTTON('９')
+
+    addition = html.BUTTON('＋')
+    subtraction = html.BUTTON('ー')
+    multiplication = html.BUTTON('×')
+    division = html.BUTTON('÷')
+
+    enter = html.BUTTON('＝')
+    clear = html.BUTTON('ＡＣ')
+    percent = html.BUTTON('％')
+    Tab = html.I('&ensp;')
+    Br = html.BR()
+
+    document['subCalculation_Field1'] <= clear + percent
+    document['subCalculation_Field2'] <= division + Br + multiplication + Br + subtraction + Br + addition
+    document['subCalculation_Field3'] <= seven + eight + nine + Br + four + five + six + Br + one + two + tree + zero + dot + enter + Br
+
+    return clear, percent, division, multiplication, subtraction, addition, enter, seven, eight, nine, four, five, six, one, two, tree, zero, dot
+
+def main():
+    Clear, Percent, Division, Multiplication, Subtraction, Addition, Enter, Seven, Eight, Nine, Four, Five, Six, One, Two, Tree, Zero, Dot = CalcButton()
+    @bind(Clear, "click")
+    def AClear(ac):
+        global CalculationList
+        global CalculatedList
+        CalculationList = ['', '', '']
+        CalculatedList = ['']
+        document['RESULT'].clear()
+
+    @bind(Percent, "click")
+    def Percents(Pc):
+        document['RESULT'].clear()
+        try:
+            CalculatedList[0] = str(int(CalculatedList[0]) / 100)
+            document['RESULT'] <= ' '.join(CalculationList)
+        except ValueError:
+            CalculatedList[0] = '0'
+            document['RESULT'] <= ' '.join(CalculationList)
+    
+    @bind(Division, "click")
+    def Divisions(Div):
+        document['RESULT'].clear()
+        if not CalculationList[1] == '//':
+            CalculationList[1] = '/'
+            document['RESULT'] <= ' '.join(CalculationList)
+        else:
+            CalculationList[1] = '/'
+            document['RESULT'] <= ' '.join(CalculationList)
+        
+        
+    @bind(Multiplication, "click")
+    def Multiplications(Mul):
+        document['RESULT'].clear()
+        if not CalculationList[1] == '**':
+            CalculationList[1] = '*'
+            document['RESULT'] <= ' '.join(CalculationList)
+        else:
+            CalculationList[1] = '*'
+            document['RESULT'] <= ' '.join(CalculationList)
+
+    @bind(Subtraction, "click")
+    def Subtractions(Sbs):
+        document['RESULT'].clear()
+        if not CalculationList[1] == '--':
+            CalculationList[1] = '-'
+            document['RESULT'] <= ' '.join(CalculationList)
+        else:
+            CalculationList[1] = '-'
+            document['RESULT'] <= ' '.join(CalculationList)
+
+    @bind(Addition, "click")
+    def Additions(ads):
+        document['RESULT'].clear()
+        if not CalculationList[1] == '++':
+            CalculationList[1] = '+'
+            document['RESULT'] <= ' '.join(CalculationList)
+        else:
+            CalculationList[1] = '+'
+            document['RESULT'] <= ' '.join(CalculationList)
+
+    @bind(One, "click")
+    def Ones(o):
+        document['RESULT'].clear()
+        if not CalculationList[1] == '':
+            if not CalculationList[2] == '':
+                CalculationList[2] = CalculationList[2].replace(CalculationList[2], '{}1'.format(CalculationList[2]))
+                document['RESULT'] <= ' '.join(CalculationList)
+            else:
+                CalculationList[2] = '1'
+                document['RESULT'] <= ' '.join(CalculationList)
+        else:
+            if not CalculationList[0] == '':
+                CalculationList[0] = CalculationList[0].replace(CalculationList[0], '{}1'.format(CalculationList[0]))
+                document['RESULT'] <= ' '.join(CalculationList)
+            else:
+                CalculationList[0] = '1'
+                document['RESULT'] <= ' '.join(CalculationList)
+
+    @bind(Two, "click")
+    def Twos(tws):
+        document['RESULT'].clear()
+        if not CalculationList[1] == '':
+            if not CalculationList[2] == '':
+                CalculationList[2] = CalculationList[2].replace(CalculationList[2], '{}2'.format(CalculationList[2]))
+                document['RESULT'] <= ' '.join(CalculationList)
+            else:
+                CalculationList[2] = '2'
+                document['RESULT'] <= ' '.join(CalculationList)
+        else:
+            if not CalculationList[0] == '':
+                CalculationList[0] = CalculationList[0].replace(CalculationList[0], '{}2'.format(CalculationList[0]))
+                document['RESULT'] <= ' '.join(CalculationList)
+            else:
+                CalculationList[0] = '2'
+                document['RESULT'] <= ' '.join(CalculationList)
+
+    @bind(Tree, "click")
+    def Trees(tres):
+        document['RESULT'].clear()
+        if not CalculationList[1] == '':
+            if not CalculationList[2] == '':
+                CalculationList[2] = CalculationList[2].replace(CalculationList[2], '{}3'.format(CalculationList[2]))
+                document['RESULT'] <= ' '.join(CalculationList)
+            else:
+                CalculationList[2] = '3'
+                document['RESULT'] <= ' '.join(CalculationList)
+        else:
+            if not CalculationList[0] == '':
+                CalculationList[0] = CalculationList[0].replace(CalculationList[0], '{}3'.format(CalculationList[0]))
+                document['RESULT'] <= ' '.join(CalculationList)
+            else:
+                CalculationList[0] = '3'
+                document['RESULT'] <= ' '.join(CalculationList)
+
+    @bind(Four, "click")
+    def Fours(Fs):
+        document['RESULT'].clear()
+        if not CalculationList[1] == '':
+            if not CalculationList[2] == '':
+                CalculationList[2] = CalculationList[2].replace(CalculationList[2], '{}4'.format(CalculationList[2]))
+                document['RESULT'] <= ' '.join(CalculationList)
+            else:
+                CalculationList[2] = '4'
+                document['RESULT'] <= ' '.join(CalculationList)
+        else:
+            if not CalculationList[0] == '':
+                CalculationList[0] = CalculationList[0].replace(CalculationList[0], '{}4'.format(CalculationList[0]))
+                document['RESULT'] <= ' '.join(CalculationList)
+            else:
+                CalculationList[0] = '4'
+                document['RESULT'] <= ' '.join(CalculationList)
+
+    @bind(Five, "click")
+    def Fives(_fvs):
+        document['RESULT'].clear()
+        if not CalculationList[1] == '':
+            if not CalculationList[2] == '':
+                CalculationList[2] = CalculationList[2].replace(CalculationList[2], '{}5'.format(CalculationList[2]))
+                document['RESULT'] <= ' '.join(CalculationList)
+            else:
+                CalculationList[2] = '5'
+                document['RESULT'] <= ' '.join(CalculationList)
+        else:
+            if not CalculationList[0] == '':
+                CalculationList[0] = CalculationList[0].replace(CalculationList[0], '{}5'.format(CalculationList[0]))
+                document['RESULT'] <= ' '.join(CalculationList)
+            else:
+                CalculationList[0] = '5'
+                document['RESULT'] <= ' '.join(CalculationList)
+
+    @bind(Six, "click")
+    def Sixs(si):
+        document['RESULT'].clear()
+        if not CalculationList[1] == '':
+            if not CalculationList[2] == '':
+                CalculationList[2] = CalculationList[2].replace(CalculationList[2], '{}6'.format(CalculationList[2]))
+                document['RESULT'] <= ' '.join(CalculationList)
+            else:
+                CalculationList[2] = '6'
+                document['RESULT'] <= ' '.join(CalculationList)
+        else:
+            if not CalculationList[0] == '':
+                CalculationList[0] = CalculationList[0].replace(CalculationList[0], '{}6'.format(CalculationList[0]))
+                document['RESULT'] <= ' '.join(CalculationList)
+            else:
+                CalculationList[0] = '6'
+                document['RESULT'] <= ' '.join(CalculationList)
+
+    @bind(Seven, "click")
+    def Sevens(Svs):
+        document['RESULT'].clear()
+        if not CalculationList[1] == '':
+            if not CalculationList[2] == '':
+                CalculationList[2] = CalculationList[2].replace(CalculationList[2], '{}7'.format(CalculationList[2]))
+                document['RESULT'] <= ' '.join(CalculationList)
+            else:
+                CalculationList[2] = '7'
+                document['RESULT'] <= ' '.join(CalculationList)
+        else:
+            if not CalculationList[0] == '':
+                CalculationList[0] = CalculationList[0].replace(CalculationList[0], '{}7'.format(CalculationList[0]))
+                document['RESULT'] <= ' '.join(CalculationList)
+            else:
+                CalculationList[0] = '7'
+                document['RESULT'] <= ' '.join(CalculationList)
+
+    @bind(Eight, "click")
+    def Eights(Eig):
+        document['RESULT'].clear()
+        if not CalculationList[1] == '':
+            if not CalculationList[2] == '':
+                CalculationList[2] = CalculationList[2].replace(CalculationList[2], '{}8'.format(CalculationList[2]))
+                document['RESULT'] <= ' '.join(CalculationList)
+            else:
+                CalculationList[2] = '8'
+                document['RESULT'] <= ' '.join(CalculationList)
+        else:
+            if not CalculationList[0] == '':
+                CalculationList[0] = CalculationList[0].replace(CalculationList[0], '{}8'.format(CalculationList[0]))
+                document['RESULT'] <= ' '.join(CalculationList)
+            else:
+                CalculationList[0] = '8'
+                document['RESULT'] <= ' '.join(CalculationList)
+
+    @bind(Nine, "click")
+    def Nines(ni):
+        document['RESULT'].clear()
+        if not CalculationList[1] == '':
+            if not CalculationList[2] == '':
+                CalculationList[2] = CalculationList[2].replace(CalculationList[2], '{}9'.format(CalculationList[2]))
+                document['RESULT'] <= ' '.join(CalculationList)
+            else:
+                CalculationList[2] = '9'
+                document['RESULT'] <= ' '.join(CalculationList)
+        else:
+            if not CalculationList[0] == '':
+                CalculationList[0] = CalculationList[0].replace(CalculationList[0], '{}9'.format(CalculationList[0]))
+                document['RESULT'] <= ' '.join(CalculationList)
+            else:
+                CalculationList[0] = '9'
+                document['RESULT'] <= ' '.join(CalculationList)
+
+    @bind(Zero, "click")
+    def Zeros(ze):
+        document['RESULT'].clear()
+        if not CalculationList[1] == '':
+            if not CalculationList[2] == '':
+                CalculationList[2] = CalculationList[2].replace(CalculationList[2], '{}0'.format(CalculationList[2]))
+                document['RESULT'] <= ' '.join(CalculationList)
+            else:
+                CalculationList[2] = '0'
+                document['RESULT'] <= ' '.join(CalculationList)
+        else:
+            if not CalculationList[0] == '':
+                CalculationList[0] = CalculationList[0].replace(CalculationList[0], '{}0'.format(CalculationList[0]))
+                document['RESULT'] <= ' '.join(CalculationList)
+            else:
+                CalculationList[0] = '0'
+                document['RESULT'] <= ' '.join(CalculationList)
+
+    @bind(Dot, "click")
+    def Dots(dt):
+        document['RESULT'].clear()
+        if not CalculationList[1] == '':
+            if not CalculationList[2] == '':
+                if not '.' in CalculationList[2]:
+                    CalculationList[2] = CalculationList[2].replace(CalculationList[2], '{}.'.format(CalculationList[2]))
+                    document['RESULT'] <= ' '.join(CalculationList)
+            else:
+                CalculationList[2] = '0.'
+                document['RESULT'] <= ' '.join(CalculationList)
+        else:
+            if not CalculationList[0] == '':
+                if not '.' in CalculationList[0]:
+                    CalculationList[0] = CalculationList[0].replace(CalculationList[0], '{}.'.format(CalculationList[0]))
+                    document['RESULT'] <= ' '.join(CalculationList)
+            else:
+                CalculationList[0] = '0.'
+                document['RESULT'] <= ' '.join(CalculationList)
+
+    @bind(Enter, "click")
+    def Calculation(cc):
+        global CalculationList
+        global CalculatedList
+        document['RESULT'].clear()
+        if CalculationList[1] == '/':
+            try:
+                CalculatedList[0] = int(CalculationList[0]) / int(CalculationList[2])
+            except ValueError:
+                CalculatedList[0] = round(float(CalculationList[0]) / float(CalculationList[2]), 5)
+        elif CalculationList[1] == '*':
+            try:
+                CalculatedList[0] = int(CalculationList[0]) * int(CalculationList[2])
+            except ValueError:
+                CalculatedList[0] = round(float(CalculationList[0]) * float(CalculationList[2]), 5)
+        elif CalculationList[1] == '-':
+            try:
+                CalculatedList[0] = int(CalculationList[0]) - int(CalculationList[2])
+            except ValueError:
+                CalculatedList[0] = round(float(CalculationList[0]) - float(CalculationList[2]), 5)
+        elif CalculationList[1] == '+':
+            try:
+                CalculatedList[0] = int(CalculationList[0]) + int(CalculationList[2])
+            except ValueError:
+                CalculatedList[0] = round(float(CalculationList[0]) + float(CalculationList[2]), 5)
+
+        document['RESULT'] <= '{}'.format(CalculatedList[0])
+        CalculationList = ['', '', '']
+        CalculatedList = ['']
+main()
+</script>
+	<h4 style="display: inline;"><a href="https://crossdarkrix.github.io/ToramHTMLTools/" style="display: inline;">トップページに戻る</a></h4>
+	<h2 id="TITLE"></h2>
+	<div id="RESULTs"><h2 id="RESULT"></h2></div><br>
+	<div id="Calculation_Field">
+		<div id="subCalculation_Field1">
+		</div>
+		<br><div id="subCalculation_Field2">
+		</div>
+		<br><div id="subCalculation_Field3">
+		</div>
+		
+	</div><br>
+	<h3><br><br><br>
+	</h3>
+        </body>
+
+    </html>

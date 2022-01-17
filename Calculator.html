@@ -65,7 +65,7 @@ button{
 div#RESULTs{
 	border: 2px groove;
 	color: #4f4f4f;
-	width: 950px;
+	width: 836px;
 	height: 60px;
 
 }
@@ -98,7 +98,7 @@ div#Calculation_Field{
 from browser import document, html, bind
 
 document["TITLE"] <= "簡易電卓"
-CalculationList = ['', '', '']
+CalculationList = ['', '', '', '']
 CalculatedList = ['']
 
 def CalcButton():
@@ -150,55 +150,328 @@ def main():
                 document['RESULT'] <= ' '.join(CalculationList[0])
             except ValueError:
                 CalculatedList[0] = '0'
-                document['RESULT'] <= ' '.join(CalculationList)
+                document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
         elif not CalculationList[2] == '':
             try:
                 CalculationList[2] = str(int(CalculationList[2]) / 100)
                 document['RESULT'] <= ' '.join(CalculationList[2])
             except ValueError:
                 CalculatedList[2] = '0'
-                document['RESULT'] <= ' '.join(CalculationList)
+                document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
     
     @bind(Division, "click")
     def Divisions(Div):
         document['RESULT'].clear()
-        if not CalculationList[1] == '//':
+        if CalculationList[1] == '':
             CalculationList[1] = '/'
-            document['RESULT'] <= ' '.join(CalculationList)
+            document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
         else:
-            CalculationList[1] = '/'
-            document['RESULT'] <= ' '.join(CalculationList)
-        
+            if not CalculationList[1] == '':
+                document['RESULT'].clear()
+                try:
+                    if CalculationList[1] == '/':
+                        CalculationList[0] = str(int(CalculationList[0]) / int(CalculationList[2]))
+                        CalculationList[2] = ''
+                        CalculationList[1] = '/'
+                        document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
+                except ValueError:
+                    try:
+                        if CalculationList[1] == '/':
+                            CalculationList[0] = float(CalculationList[0]) / float(CalculationList[2])
+                            CalculationList[2] = ''
+                            CalculationList[1] = '/'
+                            document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
+                    except:
+                        pass
+                except ZeroDivisionError:
+                    try:
+                        if CalculationList[1] == '/':
+                            CalculationList[0] = '0'
+                            CalculationList[2] = ''
+                            CalculationList[1] = '/'
+                            document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
+                    except:
+                        pass
+                try:
+                    if CalculationList[1] == '*':
+                        CalculationList[0] = str(int(CalculationList[0]) * int(CalculationList[2]))
+                        CalculationList[2] = ''
+                        CalculationList[1] = '/'
+                        document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
+                except ValueError:
+                    try:
+                        if CalculationList[1] == '*':
+                            CalculationList[0] = float(CalculationList[0]) * float(CalculationList[2])
+                            CalculationList[2] = ''
+                            CalculationList[1] = '/'
+                            document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
+                    except:
+                        pass
+                try:
+                    if CalculationList[1] == '-':
+                        CalculationList[0] = str(int(CalculationList[0]) - int(CalculationList[2]))
+                        CalculationList[2] = ''
+                        CalculationList[1] = '/'
+                        document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
+                except ValueError:
+                    try:
+                        if CalculationList[1] == '-':
+                            CalculationList[0] = float(CalculationList[0]) - float(CalculationList[2])
+                            CalculationList[2] = ''
+                            CalculationList[1] = '/'
+                            document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
+                    except:
+                        pass
+                try:
+                    if CalculationList[1] == '+':
+                        CalculationList[0] = str(int(CalculationList[0]) + int(CalculationList[2]))
+                        CalculationList[2] = ''
+                        CalculationList[1] = '/'
+                        document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
+                except ValueError:
+                    try:
+                        if CalculationList[1] == '+':
+                            CalculationList[0] = float(CalculationList[0]) + float(CalculationList[2])
+                            CalculationList[2] = ''
+                            CalculationList[1] = '/'
+                            document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
+                    except:
+                        pass
         
     @bind(Multiplication, "click")
     def Multiplications(Mul):
         document['RESULT'].clear()
-        if not CalculationList[1] == '**':
+        if CalculationList[1] == '':
             CalculationList[1] = '*'
-            document['RESULT'] <= ' '.join(CalculationList)
+            document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
         else:
-            CalculationList[1] = '*'
-            document['RESULT'] <= ' '.join(CalculationList)
+            if not CalculationList[1] == '':
+                document['RESULT'].clear()
+                try:
+                    if CalculationList[1] == '/':
+                        CalculationList[0] = str(int(CalculationList[0]) / int(CalculationList[2]))
+                        CalculationList[2] = ''
+                        CalculationList[1] = '*'
+                        document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
+                except ValueError:
+                    try:
+                        if CalculationList[1] == '/':
+                            CalculationList[0] = float(CalculationList[0]) / float(CalculationList[2])
+                            CalculationList[2] = ''
+                            CalculationList[1] = '*'
+                            document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
+                    except:
+                        pass
+                except ZeroDivisionError:
+                    try:
+                        if CalculationList[1] == '/':
+                            CalculationList[0] = '0'
+                            CalculationList[2] = ''
+                            CalculationList[1] = '*'
+                            document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
+                    except:
+                        pass
+                try:
+                    if CalculationList[1] == '*':
+                        CalculationList[0] = str(int(CalculationList[0]) * int(CalculationList[2]))
+                        CalculationList[2] = ''
+                        CalculationList[1] = '*'
+                        document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
+                except ValueError:
+                    try:
+                        if CalculationList[1] == '*':
+                            CalculationList[0] = float(CalculationList[0]) * float(CalculationList[2])
+                            CalculationList[2] = ''
+                            CalculationList[1] = '*'
+                            document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
+                    except:
+                        pass
+                try:
+                    if CalculationList[1] == '-':
+                        CalculationList[0] = str(int(CalculationList[0]) - int(CalculationList[2]))
+                        CalculationList[2] = ''
+                        CalculationList[1] = '*'
+                        document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
+                except ValueError:
+                    try:
+                        if CalculationList[1] == '-':
+                            CalculationList[0] = float(CalculationList[0]) - float(CalculationList[2])
+                            CalculationList[2] = ''
+                            CalculationList[1] = '*'
+                            document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
+                    except:
+                        pass
+                try:
+                    if CalculationList[1] == '+':
+                        CalculationList[0] = str(int(CalculationList[0]) + int(CalculationList[2]))
+                        CalculationList[2] = ''
+                        CalculationList[1] = '*'
+                        document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
+                except ValueError:
+                    try:
+                        if CalculationList[1] == '+':
+                            CalculationList[0] = float(CalculationList[0]) + float(CalculationList[2])
+                            CalculationList[2] = ''
+                            CalculationList[1] = '*'
+                            document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
+                    except:
+                        pass
 
     @bind(Subtraction, "click")
     def Subtractions(Sbs):
         document['RESULT'].clear()
-        if not CalculationList[1] == '--':
+        if CalculationList[1] == '':
             CalculationList[1] = '-'
-            document['RESULT'] <= ' '.join(CalculationList)
+            document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
         else:
-            CalculationList[1] = '-'
-            document['RESULT'] <= ' '.join(CalculationList)
+            if not CalculationList[1] == '':
+                document['RESULT'].clear()
+                try:
+                    if CalculationList[1] == '/':
+                        CalculationList[0] = str(int(CalculationList[0]) / int(CalculationList[2]))
+                        CalculationList[2] = ''
+                        CalculationList[1] = '-'
+                        document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
+                except ValueError:
+                    try:
+                        if CalculationList[1] == '/':
+                            CalculationList[0] = float(CalculationList[0]) / float(CalculationList[2])
+                            CalculationList[2] = ''
+                            CalculationList[1] = '-'
+                            document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
+                    except:
+                        pass
+                except ZeroDivisionError:
+                    try:
+                        if CalculationList[1] == '/':
+                            CalculationList[0] = '0'
+                            CalculationList[2] = ''
+                            CalculationList[1] = '-'
+                            document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
+                    except:
+                        pass
+                try:
+                    if CalculationList[1] == '*':
+                        CalculationList[0] = str(int(CalculationList[0]) * int(CalculationList[2]))
+                        CalculationList[2] = ''
+                        CalculationList[1] = '-'
+                        document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
+                except ValueError:
+                    try:
+                        if CalculationList[1] == '*':
+                            CalculationList[0] = float(CalculationList[0]) * float(CalculationList[2])
+                            CalculationList[2] = ''
+                            CalculationList[1] = '-'
+                            document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
+                    except:
+                        pass
+                try:
+                    if CalculationList[1] == '-':
+                        CalculationList[0] = str(int(CalculationList[0]) - int(CalculationList[2]))
+                        CalculationList[2] = ''
+                        CalculationList[1] = '-'
+                        document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
+                except ValueError:
+                    try:
+                        if CalculationList[1] == '-':
+                            CalculationList[0] = float(CalculationList[0]) - float(CalculationList[2])
+                            CalculationList[2] = ''
+                            CalculationList[1] = '-'
+                            document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
+                    except:
+                        pass
+                try:
+                    if CalculationList[1] == '+':
+                        CalculationList[0] = str(int(CalculationList[0]) + int(CalculationList[2]))
+                        CalculationList[2] = ''
+                        CalculationList[1] = '-'
+                        document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
+                except ValueError:
+                    try:
+                        if CalculationList[1] == '+':
+                            CalculationList[0] = float(CalculationList[0]) + float(CalculationList[2])
+                            CalculationList[2] = ''
+                            CalculationList[1] = '-'
+                            document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
+                    except:
+                        pass
 
     @bind(Addition, "click")
     def Additions(ads):
         document['RESULT'].clear()
-        if not CalculationList[1] == '++':
+        if CalculationList[1] == '':
             CalculationList[1] = '+'
-            document['RESULT'] <= ' '.join(CalculationList)
+            document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
         else:
-            CalculationList[1] = '+'
-            document['RESULT'] <= ' '.join(CalculationList)
+            if not CalculationList[1] == '':
+                document['RESULT'].clear()
+                try:
+                    if CalculationList[1] == '/':
+                        CalculationList[0] = str(int(CalculationList[0]) / int(CalculationList[2]))
+                        CalculationList[2] = ''
+                        CalculationList[1] = '+'
+                        document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
+                except ValueError:
+                    try:
+                        if CalculationList[1] == '/':
+                            CalculationList[0] = float(CalculationList[0]) / float(CalculationList[2])
+                            CalculationList[2] = ''
+                            CalculationList[1] = '+'
+                            document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
+                    except:
+                        pass
+                except ZeroDivisionError:
+                    if CalculationList[1] == '/':
+                        CalculationList[0] = '0'
+                        CalculationList[2] = ''
+                        CalculationList[1] = '+'
+                        document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
+                try:
+                    if CalculationList[1] == '*':
+                        CalculationList[0] = str(int(CalculationList[0]) * int(CalculationList[2]))
+                        CalculationList[2] = ''
+                        CalculationList[1] = '+'
+                        document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
+                except ValueError:
+                    try:
+                        if CalculationList[1] == '*':
+                            CalculationList[0] = float(CalculationList[0]) * float(CalculationList[2])
+                            CalculationList[2] = ''
+                            CalculationList[1] = '+'
+                            document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
+                    except:
+                        pass
+                try:
+                    if CalculationList[1] == '-':
+                        CalculationList[0] = str(int(CalculationList[0]) - int(CalculationList[2]))
+                        CalculationList[2] = ''
+                        CalculationList[1] = '+'
+                        document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
+                except ValueError:
+                    try:
+                        if CalculationList[1] == '-':
+                            CalculationList[0] = float(CalculationList[0]) - float(CalculationList[2])
+                            CalculationList[2] = ''
+                            CalculationList[1] = '+'
+                            document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
+                    except:
+                        pass
+                try:
+                    
+                    if CalculationList[1] == '+':
+                        CalculationList[0] = str(int(CalculationList[0]) + int(CalculationList[2]))
+                        CalculationList[2] = ''
+                        CalculationList[1] = '+'
+                        document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
+                except ValueError:
+                    try:
+                        if CalculationList[1] == '+':
+                            CalculationList[0] = float(CalculationList[0]) + float(CalculationList[2])
+                            CalculationList[2] = ''
+                            CalculationList[1] = '+'
+                            document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
+                    except:
+                        pass
 
     @bind(One, "click")
     def Ones(o):
@@ -206,17 +479,17 @@ def main():
         if not CalculationList[1] == '':
             if not CalculationList[2] == '':
                 CalculationList[2] = CalculationList[2].replace(CalculationList[2], '{}1'.format(CalculationList[2]))
-                document['RESULT'] <= ' '.join(CalculationList)
+                document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
             else:
                 CalculationList[2] = '1'
-                document['RESULT'] <= ' '.join(CalculationList)
+                document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
         else:
             if not CalculationList[0] == '':
                 CalculationList[0] = CalculationList[0].replace(CalculationList[0], '{}1'.format(CalculationList[0]))
-                document['RESULT'] <= ' '.join(CalculationList)
+                document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
             else:
                 CalculationList[0] = '1'
-                document['RESULT'] <= ' '.join(CalculationList)
+                document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
 
     @bind(Two, "click")
     def Twos(tws):
@@ -224,17 +497,17 @@ def main():
         if not CalculationList[1] == '':
             if not CalculationList[2] == '':
                 CalculationList[2] = CalculationList[2].replace(CalculationList[2], '{}2'.format(CalculationList[2]))
-                document['RESULT'] <= ' '.join(CalculationList)
+                document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
             else:
                 CalculationList[2] = '2'
-                document['RESULT'] <= ' '.join(CalculationList)
+                document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
         else:
             if not CalculationList[0] == '':
                 CalculationList[0] = CalculationList[0].replace(CalculationList[0], '{}2'.format(CalculationList[0]))
-                document['RESULT'] <= ' '.join(CalculationList)
+                document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
             else:
                 CalculationList[0] = '2'
-                document['RESULT'] <= ' '.join(CalculationList)
+                document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
 
     @bind(Tree, "click")
     def Trees(tres):
@@ -242,17 +515,17 @@ def main():
         if not CalculationList[1] == '':
             if not CalculationList[2] == '':
                 CalculationList[2] = CalculationList[2].replace(CalculationList[2], '{}3'.format(CalculationList[2]))
-                document['RESULT'] <= ' '.join(CalculationList)
+                document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
             else:
                 CalculationList[2] = '3'
-                document['RESULT'] <= ' '.join(CalculationList)
+                document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
         else:
             if not CalculationList[0] == '':
                 CalculationList[0] = CalculationList[0].replace(CalculationList[0], '{}3'.format(CalculationList[0]))
-                document['RESULT'] <= ' '.join(CalculationList)
+                document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
             else:
                 CalculationList[0] = '3'
-                document['RESULT'] <= ' '.join(CalculationList)
+                document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
 
     @bind(Four, "click")
     def Fours(Fs):
@@ -260,17 +533,17 @@ def main():
         if not CalculationList[1] == '':
             if not CalculationList[2] == '':
                 CalculationList[2] = CalculationList[2].replace(CalculationList[2], '{}4'.format(CalculationList[2]))
-                document['RESULT'] <= ' '.join(CalculationList)
+                document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
             else:
                 CalculationList[2] = '4'
-                document['RESULT'] <= ' '.join(CalculationList)
+                document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
         else:
             if not CalculationList[0] == '':
                 CalculationList[0] = CalculationList[0].replace(CalculationList[0], '{}4'.format(CalculationList[0]))
-                document['RESULT'] <= ' '.join(CalculationList)
+                document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
             else:
                 CalculationList[0] = '4'
-                document['RESULT'] <= ' '.join(CalculationList)
+                document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
 
     @bind(Five, "click")
     def Fives(_fvs):
@@ -278,17 +551,17 @@ def main():
         if not CalculationList[1] == '':
             if not CalculationList[2] == '':
                 CalculationList[2] = CalculationList[2].replace(CalculationList[2], '{}5'.format(CalculationList[2]))
-                document['RESULT'] <= ' '.join(CalculationList)
+                document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
             else:
                 CalculationList[2] = '5'
-                document['RESULT'] <= ' '.join(CalculationList)
+                document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
         else:
             if not CalculationList[0] == '':
                 CalculationList[0] = CalculationList[0].replace(CalculationList[0], '{}5'.format(CalculationList[0]))
-                document['RESULT'] <= ' '.join(CalculationList)
+                document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
             else:
                 CalculationList[0] = '5'
-                document['RESULT'] <= ' '.join(CalculationList)
+                document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
 
     @bind(Six, "click")
     def Sixs(si):
@@ -296,17 +569,17 @@ def main():
         if not CalculationList[1] == '':
             if not CalculationList[2] == '':
                 CalculationList[2] = CalculationList[2].replace(CalculationList[2], '{}6'.format(CalculationList[2]))
-                document['RESULT'] <= ' '.join(CalculationList)
+                document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
             else:
                 CalculationList[2] = '6'
-                document['RESULT'] <= ' '.join(CalculationList)
+                document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
         else:
             if not CalculationList[0] == '':
                 CalculationList[0] = CalculationList[0].replace(CalculationList[0], '{}6'.format(CalculationList[0]))
-                document['RESULT'] <= ' '.join(CalculationList)
+                document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
             else:
                 CalculationList[0] = '6'
-                document['RESULT'] <= ' '.join(CalculationList)
+                document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
 
     @bind(Seven, "click")
     def Sevens(Svs):
@@ -314,17 +587,17 @@ def main():
         if not CalculationList[1] == '':
             if not CalculationList[2] == '':
                 CalculationList[2] = CalculationList[2].replace(CalculationList[2], '{}7'.format(CalculationList[2]))
-                document['RESULT'] <= ' '.join(CalculationList)
+                document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
             else:
                 CalculationList[2] = '7'
-                document['RESULT'] <= ' '.join(CalculationList)
+                document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
         else:
             if not CalculationList[0] == '':
                 CalculationList[0] = CalculationList[0].replace(CalculationList[0], '{}7'.format(CalculationList[0]))
-                document['RESULT'] <= ' '.join(CalculationList)
+                document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
             else:
                 CalculationList[0] = '7'
-                document['RESULT'] <= ' '.join(CalculationList)
+                document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
 
     @bind(Eight, "click")
     def Eights(Eig):
@@ -332,17 +605,17 @@ def main():
         if not CalculationList[1] == '':
             if not CalculationList[2] == '':
                 CalculationList[2] = CalculationList[2].replace(CalculationList[2], '{}8'.format(CalculationList[2]))
-                document['RESULT'] <= ' '.join(CalculationList)
+                document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
             else:
                 CalculationList[2] = '8'
-                document['RESULT'] <= ' '.join(CalculationList)
+                document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
         else:
             if not CalculationList[0] == '':
                 CalculationList[0] = CalculationList[0].replace(CalculationList[0], '{}8'.format(CalculationList[0]))
-                document['RESULT'] <= ' '.join(CalculationList)
+                document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
             else:
                 CalculationList[0] = '8'
-                document['RESULT'] <= ' '.join(CalculationList)
+                document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
 
     @bind(Nine, "click")
     def Nines(ni):
@@ -350,17 +623,17 @@ def main():
         if not CalculationList[1] == '':
             if not CalculationList[2] == '':
                 CalculationList[2] = CalculationList[2].replace(CalculationList[2], '{}9'.format(CalculationList[2]))
-                document['RESULT'] <= ' '.join(CalculationList)
+                document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
             else:
                 CalculationList[2] = '9'
-                document['RESULT'] <= ' '.join(CalculationList)
+                document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
         else:
             if not CalculationList[0] == '':
                 CalculationList[0] = CalculationList[0].replace(CalculationList[0], '{}9'.format(CalculationList[0]))
-                document['RESULT'] <= ' '.join(CalculationList)
+                document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
             else:
                 CalculationList[0] = '9'
-                document['RESULT'] <= ' '.join(CalculationList)
+                document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
 
     @bind(Zero, "click")
     def Zeros(ze):
@@ -368,17 +641,17 @@ def main():
         if not CalculationList[1] == '':
             if not CalculationList[2] == '':
                 CalculationList[2] = CalculationList[2].replace(CalculationList[2], '{}0'.format(CalculationList[2]))
-                document['RESULT'] <= ' '.join(CalculationList)
+                document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
             else:
                 CalculationList[2] = '0'
-                document['RESULT'] <= ' '.join(CalculationList)
+                document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
         else:
             if not CalculationList[0] == '':
                 CalculationList[0] = CalculationList[0].replace(CalculationList[0], '{}0'.format(CalculationList[0]))
-                document['RESULT'] <= ' '.join(CalculationList)
+                document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
             else:
                 CalculationList[0] = '0'
-                document['RESULT'] <= ' '.join(CalculationList)
+                document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
 
     @bind(Dot, "click")
     def Dots(dt):
@@ -387,18 +660,18 @@ def main():
             if not CalculationList[2] == '':
                 if not '.' in CalculationList[2]:
                     CalculationList[2] = CalculationList[2].replace(CalculationList[2], '{}.'.format(CalculationList[2]))
-                    document['RESULT'] <= ' '.join(CalculationList)
+                    document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
             else:
                 CalculationList[2] = '0.'
-                document['RESULT'] <= ' '.join(CalculationList)
+                document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
         else:
             if not CalculationList[0] == '':
                 if not '.' in CalculationList[0]:
                     CalculationList[0] = CalculationList[0].replace(CalculationList[0], '{}.'.format(CalculationList[0]))
-                    document['RESULT'] <= ' '.join(CalculationList)
+                    document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
             else:
                 CalculationList[0] = '0.'
-                document['RESULT'] <= ' '.join(CalculationList)
+                document['RESULT'] <= ' '.join([str(_i) for _i in CalculationList])
 
     @bind(Enter, "click")
     def Calculation(cc):
@@ -435,7 +708,7 @@ main()
 </script>
 	<h4 style="display: inline;"><a href="https://crossdarkrix.github.io/ToramHTMLTools/" style="display: inline;">トップページに戻る</a></h4>
 	<h2 id="TITLE"></h2>
-	<div id="RESULTs"><h2 id="RESULT"></h2></div><br>
+	<div id="RESULTs"><h2 id="RESULT"></h2></div>
 	<div id="Calculation_Field">
 		<div id="subCalculation_Field1">
 		</div>

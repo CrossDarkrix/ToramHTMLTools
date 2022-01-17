@@ -101,8 +101,8 @@ def CalcButton():
     Tab = html.I('&ensp;')
     Br = html.BR()
 
-    document['subCalculation_Field1'] <= clear + percent
-    document['subCalculation_Field2'] <= division + Br + multiplication + Br + subtraction + Br + addition
+    document['subCalculation_Field1'] <= clear + percent + addition
+    document['subCalculation_Field2'] <= division + multiplication + subtraction
     document['subCalculation_Field3'] <= seven + eight + nine + Br + four + five + six + Br + one + two + tree + zero + dot + enter + Br
 
     return clear, percent, division, multiplication, subtraction, addition, enter, seven, eight, nine, four, five, six, one, two, tree, zero, dot

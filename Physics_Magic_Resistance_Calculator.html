@@ -130,7 +130,7 @@ def main():
 
 		physical_resistance = int(PI.value)
 		if 51 <= physical_resistance <= 99:
-			Physcal_ADD_Resistance = floor(50 + ((physical_resistance - 50) / 2))
+			Physcal_ADD_Resistance = floor(((50 / 100) + (((physical_resistance - 50) / 2) / 100)) * 100)
 		elif 100 <= physical_resistance:
 			Physcal_ADD_Resistance = floor(((50 / 100) + ((50 / 100) * (50 / 100)) + ((50 / 100) * (50 / 100) * ((physical_resistance - 100) / 100))) * 100)
 		elif physical_resistance <= 50:
@@ -143,7 +143,7 @@ def main():
 
 		magic_resistance = int(MI.value)
 		if 51 <= magic_resistance <= 99:
-			Magic_ADD_Resistance = floor((50 / 100) * (((magic_resistance - 50) / 5) / 100) * 100) + 50
+			Magic_ADD_Resistance =  floor(((50 / 100) + (((magic_resistance - 50) / 2) / 100)) * 100)
 		elif 100 <= magic_resistance:
 			Magic_ADD_Resistance = floor(((50 / 100) + ((50 / 100) * (50 / 100)) + ((50 / 100) * (50 / 100) * ((magic_resistance - 100) / 100))) * 100)
 		elif magic_resistance <= 50:

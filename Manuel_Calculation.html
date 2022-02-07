@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<title>簡易電卓</title>
+<title>簡易入力電卓</title>
 <script type="text/javascript" src="brython/www/src/brython.js">
 </script>
 <script type="text/javascript" src="brython/www/src/brython_stdlib.js">
@@ -68,6 +68,7 @@ div#Calculation_Field{
 <script type="text/python">
 from browser import document, html, bind
 
+document["TITLE"] <= "簡易入力電卓"
 def Calculation():
     calculation_title = html.I('計算式:')
     calculation = html.INPUT()

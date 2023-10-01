@@ -1,0 +1,193 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>トーラムオンライン クリティカルダメージ計算ツール</title>
+<script type="text/javascript" src="brython/www/src/brython.js">
+</script>
+<script type="text/javascript" src="brython/www/src/brython_stdlib.js">
+</script>
+<style type="text/css">
+body{
+	background-color: #2b2b2b;
+	color: #e4cfcf;
+	font-size: 23px;
+}
+input{
+	font: sans-serif;
+	font-size: 25px;
+	width: 80px;
+	height: 50px;
+	padding: 0.3em;
+	transition: 0.3s;
+	color: #d3d3d3;
+	border: none;
+	border-bottom: 2px solid #1b2538;
+	background-color: #463939;
+	outline-color: #343434;
+	outline-style: groove;
+	outline-width: 4.1px;
+	}
+div{
+	font-size: 25px;
+	}
+i{
+	display:inline;
+	font-size: 25px;
+	}
+
+button{
+	background-color: #4f4f4f;
+	color: #e4cfcf;
+	font-size: 35px;
+	width: 280px;
+	height: 60px;
+	outline: 0;
+	}
+div#RESULTs{
+	border: 2px groove;
+	color: #4f4f4f;
+	width: 700px;
+	height: 60px;
+
+}
+h2#RESULT{
+	font-size: 30px;
+	display:inline; 
+	width: 550px;
+	height: 80px;
+	color: red;
+	line-height: 2;
+	padding-left: 20px;
+}
+a:link { color: #e4d7a6; }
+a:visited { color: #e4d7a6; }
+a:hover { color: #e4d7a6; }
+a:active { color: #e4d7a6; }
+a{
+	font-family: sans-serif;
+	font-size: 23px;
+	}
+div#text_field{
+	font-size: 35px;
+	}
+</style>
+</head>
+<body onload="brython()">
+<script type="text/python">
+from browser import document, html, bind
+from math import floor as flr
+document["TITLE"] <= "クリティカルダメージ計算ツール"
+TEXT_Feild = document["text_field"]
+def STRss():
+	STR_MSG = html.I("STR値(ステータス):")
+	STRs = html.INPUT()
+	AGI_MSG = html.I("AGI値(ステータス):")
+	AGIs = html.INPUT()
+	STR_Percent_MSG = html.I("STR値(％)の合計値:")
+	STRs_Percent = html.INPUT()
+	AGI_Percent_MSG = html.I("AGI値(％)の合計値:")
+	AGIs_Percent = html.INPUT()
+	CRTDMG_MSG = html.I("合計クリティカルダメージ:")
+	CriticalDamages = html.INPUT()
+	CRTDMG_Percent_MSG = html.I("合計クリティカルダメージ(％):")
+	CrtDamage_Percents = html.INPUT()
+	SkillCRTD_MSG = html.I("クリティカルアップのレベル:")
+	SkillCRTD = html.INPUT()
+	Submit_BTNs = html.BUTTON("計算する")
+
+	TEXT_Feild <= STR_MSG + html.I(" ") + STRs + html.BR() + AGI_MSG + html.I(" ") + AGIs + html.BR() + STR_Percent_MSG + html.I(" ") + STRs_Percent + html.BR() + AGI_Percent_MSG + html.I(" ") + AGIs_Percent + html.BR() + CRTDMG_MSG + html.I(" ") + CriticalDamages + html.BR() + CRTDMG_Percent_MSG + html.I(" ") + CrtDamage_Percents + html.BR() + SkillCRTD_MSG + html.I(" ") + SkillCRTD + html.BR() + html.BR() + Submit_BTNs
+	STRs.focus()
+	AGIs.focus()
+	STRs_Percent.focus()
+	AGIs_Percent.focus()
+	CriticalDamages.focus()
+	CrtDamage_Percents.focus()
+	SkillCRTD.focus()
+
+	return  STRs, STRs_Percent, CriticalDamages, CrtDamage_Percents, SkillCRTD, AGIs, AGIs_Percent, Submit_BTNs
+
+def sclear():
+	document["RESULT"].clear()
+
+def main():
+	STR, STR_Percent, CriticalDamage, CrtDamage_Percent, SkillCrtD, AGI, AGI_Percent, Submit_BTN = STRss()
+	@bind(Submit_BTN,"click")
+	def click(cl):
+		sclear()
+		try:
+			skillLevel = int(SkillCrtD.value)
+		except ValueError:
+			skillLevel = 1
+
+		if skillLevel == 1:
+			SkillCrtDamage = 0
+		elif skillLevel == 2:
+			SkillCrtDamage = 1
+		elif skillLevel == 3:
+			SkillCrtDamage = 1
+		elif skillLevel == 4:
+			SkillCrtDamage = 2
+		elif skillLevel == 5:
+			SkillCrtDamage = 2
+		elif skillLevel == 6:
+			SkillCrtDamage = 3
+		elif skillLevel == 7:
+			SkillCrtDamage = 3
+		elif skillLevel == 8:
+			SkillCrtDamage = 4
+		elif skillLevel == 9:
+			SkillCrtDamage = 4
+		elif skillLevel == 10:
+			SkillCrtDamage = 5
+		else:
+			document["RESULT"] <= "エラー: バトルスキルのレベルが既定値範囲外です。"
+		if STR_Percent.value == '':
+			STR_Percent.value = '0'
+		if AGI_Percent.value == '':
+			AGI_Percent.value = '0'
+		if STR.value == '':
+			STR.value = '0'
+		if AGI.value == '':
+			AGI.value = '0'
+		if CrtDamage_Percent.value == '':
+			CrtDamage_Percent.value = '0'
+		if CriticalDamage.value == '':
+			CriticalDamage.value = '0'
+		StrPercent = int(STR.value) * (int(STR_Percent.value) / 100)
+		AgiPercent = int(AGI.value) * (int(AGI_Percent.value) / 100)
+		AllSTR = 150 + ((StrPercent + int(STR.value)) / 5)
+		AllAGI = 150 + (((StrPercent + int(STR.value)) + (AgiPercent + int(AGI.value))) / 10)
+		CRtSTR = 150 + (int(STR.value) / 5)
+		CRtAGI = 150 + (( int(STR.value) + int(AGI.value)) / 10)
+		CriticalDamage_Percent_STR = CRtSTR * ((int(CrtDamage_Percent.value) + SkillCrtDamage) / 100)
+		CriticalDamage_Percent_AGI = CRtAGI * ((int(CrtDamage_Percent.value) + SkillCrtDamage) / 100)
+		AGI_ALLCriticalDamage = AllAGI + int(CriticalDamage.value) + flr(CriticalDamage_Percent_AGI)
+		STR_ALLCriticalDamage = AllSTR + int(CriticalDamage.value) + flr(CriticalDamage_Percent_STR)
+		if AGI_ALLCriticalDamage > STR_ALLCriticalDamage:
+			document["RESULT"] <= "あなたのクリティカルダメージは: {CRTDAMAGE}です。".format(CRTDAMAGE=flr(AGI_ALLCriticalDamage))
+		if STR_ALLCriticalDamage > AGI_ALLCriticalDamage:
+			document["RESULT"] <= "あなたのクリティカルダメージは: {CRTDAMAGE}です。".format(CRTDAMAGE=flr(STR_ALLCriticalDamage))
+main()
+</script>
+	<h4 style="display: inline;"><a href="https://crossdarkrix.github.io/ToramHTMLTools/" style="display: inline;">トップページに戻る</a></h4>
+	<h2 id="TITLE"></h2>
+	<div>
+		注意事項:<br>
+			「STR値(ステータス)」にはステータスの値(料理の値を含む)を入れてください<br>
+			「STR値(％)の合計値」には武器や鎧、クリスタのSTR％を入れてください<br>
+			「AGI値(ステータス)」にはステータスの値(料理の値を含む)を入れてください<br>
+			「AGI値(％)の合計値」には武器や鎧、クリスタのAGI％を入れてください<br>
+			「合計クリティカルダメージ」には武器や鎧やクリスタ、エンチャントの合計クリティカルダメージを入れてください<br>
+			「合計クリティカルダメージ(％)」には武器や鎧やクリスタ、エンチャントの合計クリティカルダメージ(％)を入れてください<br>
+			「クリティカルアップのレベル」にはバトルスキルのクリティカルアップのレベルを入れてください(空欄でも可)<br><br>
+	</div>
+	<div id="text_field"></div><br>
+	<div id="RESULTs"><h2 id="RESULT"></h2></div>
+	<h3><br><br><br>
+		<a href="Critical_Calculator.html">クリティカル率計算ツールへ</a><br>
+		<a href="Stabillity_Rate_Calculation.html">安定率計算ツールへ</a><br>
+		<a href="Abnormal_Tolerance_Calculator.html">異常耐性計算ツールへ</a><br>
+	</h3>
+        </body>
+
+    </html>
